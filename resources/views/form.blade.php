@@ -9,7 +9,7 @@
         <div class="w-full max-w-3xl bg-white p-8">
             <h2 class="text-2xl font-extrabold text-center text-gray-800 mb-8">Form Input Data Hasil Pengecekan Ulang Divisi
                 Hublang</h2>
-            <form class="space-y-6">
+            <form class="space-y-4">
                 @csrf
 
                 <!-- NPA Field -->
