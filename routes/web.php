@@ -17,3 +17,7 @@ Route::get('/dashboard', function () {
 Route::get('/form', function () {
     return view('form');
 })->name('form');
+
+Route::get('/pegawai', function () {
+    return view('pegawai');
+})->name('pegawai');
