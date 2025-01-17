@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -19,9 +19,14 @@ Route::get('/form', function () {
 })->name('form');
 
 Route::get('/pegawai', function () {
-    return view('pegawai');
+    // Mengambil data dari tabel 'pegawai'
+    $pegawaiList = DB::table('pegawai')->get();
+    // Mengirimkan data ke view 'pegawai'
+    return view('pegawai', ['pegawaiList' => $pegawaiList]);
 })->name('pegawai');
 
 Route::get('/cabang', function () {
-    return view('cabang');
+    // Mengambil data dari tabel 'pegawai'
+    $cabangList = DB::table('cabang')->get();
+    return view('cabang', ['cabangList' => $cabangList]);
 })->name('cabang');

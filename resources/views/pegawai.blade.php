@@ -16,14 +16,12 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
-                    <td class="py-4 px-6 text-gray-700 text-center">1</td>
-                    <td class="py-4 px-6 text-gray-700 text-center">John Doe</td>
-                </tr>
-                <tr class="bg-gray-50 hover:bg-gray-100 transition duration-200 ease-in-out">
-                    <td class="py-4 px-6 text-gray-700 text-center">2</td>
-                    <td class="py-4 px-6 text-gray-700 text-center">Jane Smith</td>
-                </tr>
+                @foreach ($pegawaiList as $index => $pegawai)
+                    <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
+                        <td class="py-4 px-6 text-gray-700 text-center">{{ $index + 1 }}</td>
+                        <td class="py-4 px-6 text-gray-700 text-center">{{ $pegawai->nama_pegawai }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

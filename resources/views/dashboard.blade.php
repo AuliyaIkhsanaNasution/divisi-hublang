@@ -30,7 +30,7 @@
             </div>
             <div>
                 <h2 class="text-lg font-bold text-yellow-500">Total Cabang</h2>
-                <p class="text-2xl font-semibold mt-2 text-yellow-500">0</p>
+                <p class="text-2xl font-semibold mt-2 text-yellow-500">20</p>
             </div>
         </div>
     </div>
