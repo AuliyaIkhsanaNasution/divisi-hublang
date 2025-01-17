@@ -26,10 +26,10 @@
         </div>
         <div class="border-2 border-yellow-500 bg-white border-gradient-to-r p-6 rounded-lg shadow flex items-center">
             <div class="mr-4 text-yellow-500">
-                <i class="fas fa-user-friends text-3xl"></i>
+                <i class="fas fa-building text-3xl"></i>
             </div>
             <div>
-                <h2 class="text-lg font-bold text-yellow-500">Total Pelanggan</h2>
+                <h2 class="text-lg font-bold text-yellow-500">Total Cabang</h2>
                 <p class="text-2xl font-semibold mt-2 text-yellow-500">0</p>
             </div>
         </div>

@@ -21,3 +21,7 @@ Route::get('/form', function () {
 Route::get('/pegawai', function () {
     return view('pegawai');
 })->name('pegawai');
+
+Route::get('/cabang', function () {
+    return view('cabang');
+})->name('cabang');

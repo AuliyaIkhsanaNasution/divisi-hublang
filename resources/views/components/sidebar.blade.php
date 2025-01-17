@@ -31,6 +31,17 @@
                 Data Pegawai
             </span>
         </a>
+        <a href="/cabang"
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('cabang') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}">
+            <span class="flex items-center">
+                <svg class="h-5 w-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 4h12M6 4v16M6 4H5m13 0v16m0-16h1m-1 16H6m12 0h1M6 20H5M9 7h1v1H9V7Zm5 0h1v1h-1V7Zm-5 4h1v1H9v-1Zm5 0h1v1h-1v-1Zm-3 4h2a1 1 0 0 1 1 1v4h-4v-4a1 1 0 0 1 1-1Z" />
+                </svg>
+                Data Cabang
+            </span>
+        </a>
         <a href="/form"
             class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('form') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}">
             <span class="flex items-center">
