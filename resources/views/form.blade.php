@@ -72,6 +72,8 @@
                         <option value="Cabang 1">Cabang 1</option>
                         <option value="Cabang 2">Cabang 2</option>
                         <option value="Cabang 3">Cabang 3</option>
+                        <option value="Cabang 3">Cabang 4</option>
+                        <option value="Cabang 3">Cabang 5</option>
                     </select>
                 </div>
 
