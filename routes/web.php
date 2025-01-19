@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CabangController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -21,9 +22,4 @@ Route::get('/form', function () {
 })->name('form');
 
 Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai');
-
-Route::get('/cabang', function () {
-    // Mengambil data dari tabel 'pegawai'
-    $cabangList = DB::table('cabang')->get();
-    return view('cabang', ['cabangList' => $cabangList]);
-})->name('cabang');
+Route::get('/cabang', [CabangController::class, 'index'])->name('cabang');
