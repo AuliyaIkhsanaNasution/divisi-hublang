@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\PegawaiController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -11,19 +12,15 @@ Route::get('/', function () {
 })->name('login');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $pelangganList = DB::table('form_inputan')->get();
+    return view('dashboard', ['pelangganList' => $pelangganList]);
 })->name('dashboard');
 
 Route::get('/form', function () {
     return view('form');
 })->name('form');
 
-Route::get('/pegawai', function () {
-    // Mengambil data dari tabel 'pegawai'
-    $pegawaiList = DB::table('pegawai')->get();
-    // Mengirimkan data ke view 'pegawai'
-    return view('pegawai', ['pegawaiList' => $pegawaiList]);
-})->name('pegawai');
+Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai');
 
 Route::get('/cabang', function () {
     // Mengambil data dari tabel 'pegawai'

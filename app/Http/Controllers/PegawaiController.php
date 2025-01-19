@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB; // Tambahkan ini untuk menggunakan DB
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Pegawai;
 
 class PegawaiController extends Controller
 {
     public function index()
     {
-        // Mengambil semua data pegawai
-        $pegawaiList = DB::table('pegawai')->get();
+        // Mengambil data dari model Pegawai
+        $pegawaiList = Pegawai::getAll();
 
-        // Mengirimkan data ke view
-        return view('pegawai.index', ['pegawaiList' => $pegawaiList]);
+        // Mengirim data ke view
+        return view('pegawai', ['pegawaiList' => $pegawaiList]);
     }
 }

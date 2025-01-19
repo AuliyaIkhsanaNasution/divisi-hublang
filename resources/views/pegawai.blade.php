@@ -16,12 +16,16 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                @foreach ($pegawaiList as $index => $pegawai)
+                @forelse ($pegawaiList as $index => $pegawai)
                     <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
                         <td class="py-4 px-6 text-gray-700 text-center">{{ $index + 1 }}</td>
                         <td class="py-4 px-6 text-gray-700 text-center">{{ $pegawai->nama_pegawai }}</td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="2" class="py-4 px-6 text-gray-700 text-center">Tidak ada data pegawai</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
