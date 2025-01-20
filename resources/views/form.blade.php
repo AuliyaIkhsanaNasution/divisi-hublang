@@ -9,8 +9,10 @@
         <div class="w-full max-w-3xl bg-white p-8">
             <h2 class="text-2xl font-extrabold text-center text-gray-800 mb-8">Form Input Data Hasil Pengecekan Ulang Divisi
                 Hublang</h2>
-            <form class="space-y-4">
+            <form action="{{ route('form.store') }}" method="POST" class="space-y-4">
                 @csrf
+
+                <input type="hidden" name="pegawai_id" value="{{ $pegawai['id'] }}">
 
                 <!-- NPA Field -->
                 <div>
@@ -62,19 +64,16 @@
                         placeholder="Masukkan Arahan Tindak Lanjut"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700"></textarea>
                 </div>
-
-                <!-- Cabang Tujuan Field -->
                 <div>
                     <label for="cabang_tujuan" class="block text-sm font-semibold text-gray-700">Cabang Tujuan</label>
                     <select id="cabang_tujuan" name="cabang_tujuan"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                         <option value="">Pilih Cabang Tujuan</option>
-                        <option value="Cabang 1">Cabang 1</option>
-                        <option value="Cabang 2">Cabang 2</option>
-                        <option value="Cabang 3">Cabang 3</option>
-                        <option value="Cabang 3">Cabang 4</option>
-                        <option value="Cabang 3">Cabang 5</option>
+                        @foreach ($cabang as $item)
+                            <option value="{{ $item->id_cabang }}">{{ $item->nama_cabang }}</option>
+                        @endforeach
                     </select>
+
                 </div>
 
                 <!-- Tanggal Input Field -->
