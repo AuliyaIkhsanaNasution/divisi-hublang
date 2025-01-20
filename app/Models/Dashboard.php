@@ -18,9 +18,9 @@ class Dashboard
         return DB::table('form_inputan')->count();
     }
 
-    public static function destroyData($npa)
+    public static function destroyData($id)
     {
-        // Delete the record from the 'form_inputan' table where the npa matches
-        return DB::table('form_inputan')->where('npa', $npa)->delete();
+        // Delete the record from the 'form_inputan' table where the id matches
+        return DB::table('form_inputan')->where('id', $id)->delete();
     }
 }

@@ -73,18 +73,20 @@
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->alamat }}</td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->stand_meter }}
                             </td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->tarif }}</td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
+                                {{ $dashboard->tarif }}
+                            </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->hasil_temuan }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
-                                {{ $dashboard->arahan_tindak_lanjut }}
-                            </td>
+                                {{ $dashboard->arahan_tindak_lanjut }}</td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->cabang_id }}
                             </td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->tanggal_input }}
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
+                                {{ \Carbon\Carbon::parse($dashboard->tanggal_input)->format('d F Y') }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
-                                {{ $dashboard->tanggal_cek_ulang }}
+                                {{ \Carbon\Carbon::parse($dashboard->tanggal_cek_ulang)->format('d F Y') }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-center text-xs">
                                 <!-- Edit and Delete Actions -->
@@ -99,7 +101,6 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
-
                             </td>
                         </tr>
                     @endforeach
