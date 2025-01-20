@@ -23,14 +23,11 @@ Route::get('/form', function () {
 // Grup Route dengan Middleware 'checkLogin' untuk route yang memerlukan login
 Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     // Route Dashboard (Dilindungi dengan middleware CheckLogin)
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Route Pegawai (Dilindungi dengan middleware CheckLogin)
-    Route::get('/pegawai', [PegawaiController::class, 'index'])
-        ->name('pegawai');
+    Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai');
 
     // Route Cabang (Dilindungi dengan middleware CheckLogin)
-    Route::get('/cabang', [CabangController::class, 'index'])
-        ->name('cabang');
+    Route::get('/cabang', [CabangController::class, 'index'])->name('cabang');
 });

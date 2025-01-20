@@ -2,10 +2,11 @@
     <!-- Logo Section -->
     <div class="text-center py-2 border-b border-gray-200">
         <img src="{{ asset('img/logo.png') }}" alt="Logo" class="mx-auto h-20">
+        <span class="text-black font-medium">DIVISI HUBUNGAN LANGGANAN</span>
     </div>
 
     <!-- Navigation Section -->
-    <nav class="flex-1 mt-4">
+    <nav class="flex-1 mt-2">
         <a href="/dashboard"
             class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('dashboard') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}">
             <span class="flex items-center">
@@ -50,20 +51,22 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" />
                 </svg>
-                Form Input Data
+                Input Data
             </span>
         </a>
     </nav>
 
     <!-- Logout Section -->
-    <a href="{{ route('login') }}"
-        class="block font-bold py-3 px-6 mx-4 my-4 text-red-500 rounded-lg hover:text-white hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-900 transition">
-        <span class="flex items-center">
+    <form action="{{ route('logout') }}" method="POST" class="mx-4 my-4">
+        @csrf
+        <button type="submit"
+            class="flex items-center justify-start w-full py-3 px-6 text-red-500 font-bold rounded-lg transition hover:text-white hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-900">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7" />
             </svg>
             Logout
-        </span>
-    </a>
+        </button>
+    </form>
+
 </div>
