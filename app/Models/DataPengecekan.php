@@ -10,7 +10,7 @@ class DataPengecekan
     /**
      * Menyimpan data ke tabel.
      */
-    public static function create(array $data)
+    public static function create($data)
     {
         return DB::table('form_inputan')->insert($data);
     }

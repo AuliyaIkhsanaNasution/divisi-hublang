@@ -1,10 +1,21 @@
 @extends('components.layoutdashboard')
 
-@section('title', 'Dashboard')
+@section('title', 'Input Data Pengecekan Meter')
 
 @section('header-title', 'Dashboard')
 
 @section('content')
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 
     <div class="p-6 bg-white min-h-screen flex items-center justify-center rounded-lg shadow-md">
         <div class="w-full max-w-3xl bg-white p-8">
@@ -13,12 +24,19 @@
             <form action="{{ route('form.store') }}" method="POST" class="space-y-4">
                 @csrf
 
-                <input type="hidden" name="id_pegawai" value="{{ $pegawai['id'] }}">
-
                 <!-- NPA Field -->
                 <div>
                     <label for="npa" class="block text-sm font-semibold text-gray-700">NPA</label>
                     <input type="text" id="npa" name="npa" placeholder="Masukkan NPA"
+                        class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
+                </div>
+
+                {{-- <input type="hidden" name="id_pegawai" value="{{ $pegawai['id'] }}"> --}}
+
+                <!-- Tanggal Input Field -->
+                <div>
+                    <label for="tanggal_input" class="block text-sm font-semibold text-gray-700">Tanggal Input</label>
+                    <input type="date" id="tanggal_input" name="tanggal_input" value="{{ date('Y-m-d') }}"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                 </div>
 
@@ -67,7 +85,7 @@
                 </div>
                 <div>
                     <label for="cabang_tujuan" class="block text-sm font-semibold text-gray-700">Cabang Tujuan</label>
-                    <select id="cabang_tujuan" name="id_cabang"
+                    <select id="cabang_tujuan" name="cabang_id"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                         <option value="">Pilih Cabang Tujuan</option>
                         @foreach ($cabang as $item)
@@ -75,13 +93,6 @@
                         @endforeach
                     </select>
 
-                </div>
-
-                <!-- Tanggal Input Field -->
-                <div>
-                    <label for="tanggal_input" class="block text-sm font-semibold text-gray-700">Tanggal Input</label>
-                    <input type="date" id="tanggal_input" name="tanggal_input" value="{{ date('Y-m-d') }}"
-                        class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                 </div>
 
                 <!-- Tanggal Cetak Field -->
@@ -93,9 +104,9 @@
 
                 <!-- Tanggal Pengecekan Field -->
                 <div>
-                    <label for="tanggal_pengecekan" class="block text-sm font-semibold text-gray-700">Tanggal
-                        Pengecekan</label>
-                    <input type="date" id="tanggal_pengecekan" name="tanggal_pengecekan"
+                    <label for="tanggal_cek_ulang" class="block text-sm font-semibold text-gray-700">Tanggal
+                        cek ulang</label>
+                    <input type="date" id="tanggal_cek_ulang" name="tanggal_cek_ulang"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                 </div>
 
