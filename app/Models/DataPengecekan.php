@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\DB;
 
 class DataPengecekan
 {
-    protected $table = 'form_inputan';
 
     /**
      * Menyimpan data ke tabel.
