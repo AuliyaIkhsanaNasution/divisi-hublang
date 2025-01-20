@@ -5,6 +5,7 @@
 @section('header-title', 'Dashboard')
 
 @section('content')
+
     <div class="p-6 bg-white min-h-screen flex items-center justify-center rounded-lg shadow-md">
         <div class="w-full max-w-3xl bg-white p-8">
             <h2 class="text-2xl font-extrabold text-center text-gray-800 mb-8">Form Input Data Hasil Pengecekan Ulang Divisi
@@ -12,7 +13,7 @@
             <form action="{{ route('form.store') }}" method="POST" class="space-y-4">
                 @csrf
 
-                <input type="hidden" name="pegawai_id" value="{{ $pegawai['id'] }}">
+                <input type="hidden" name="id_pegawai" value="{{ $pegawai['id'] }}">
 
                 <!-- NPA Field -->
                 <div>
@@ -66,7 +67,7 @@
                 </div>
                 <div>
                     <label for="cabang_tujuan" class="block text-sm font-semibold text-gray-700">Cabang Tujuan</label>
-                    <select id="cabang_tujuan" name="cabang_tujuan"
+                    <select id="cabang_tujuan" name="id_cabang"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                         <option value="">Pilih Cabang Tujuan</option>
                         @foreach ($cabang as $item)

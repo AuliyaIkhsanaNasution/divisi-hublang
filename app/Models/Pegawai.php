@@ -12,6 +12,12 @@ class Pegawai
         return DB::table('pegawai')->get();
     }
 
+    public static function countPegawai()
+    {
+        // Menghitung jumlah pegawai
+        return DB::table('pegawai')->count();
+    }
+
     public static function findByUsername($username)
     {
         return DB::table('pegawai')->where('username', $username)->first();

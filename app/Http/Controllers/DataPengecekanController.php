@@ -63,6 +63,6 @@ class DataPengecekanController extends Controller
         DataPengecekan::create($data);
 
         // Redirect ke form dengan pesan sukses
-        return redirect()->route('form')->with('success', 'Data berhasil disimpan.');
+        return redirect()->route('dashboard')->with('success', 'Data berhasil disimpan.');
     }
 }
