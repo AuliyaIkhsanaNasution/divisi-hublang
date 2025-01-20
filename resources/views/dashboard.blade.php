@@ -59,7 +59,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($pelangganList as $index => $pelanggan)
+                    @foreach ($dashboardList as $index => $dashboard)
                         <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
                             <td class="py-4 px-6 text-gray-700 text-center">{{ $index + 1 }}</td>
                             <td class="py-4 px-6 text-gray-700 text-center">{{ $pelanggan->npa }}</td>
