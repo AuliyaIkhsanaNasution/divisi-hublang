@@ -1,6 +1,6 @@
 @extends('components.layoutdashboard')
 
-@section('title', 'Dashboard')
+@section('title', 'Data Pegawai')
 
 @section('header-title', 'Dashboard')
 
