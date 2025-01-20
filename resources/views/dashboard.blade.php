@@ -5,11 +5,6 @@
 @section('header-title', 'Dashboard')
 
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div class="border-2 border-indigo-500 bg-white p-6 rounded-lg shadow flex items-center">
@@ -18,7 +13,7 @@
             </div>
             <div>
                 <h2 class="text-lg font-bold text-indigo-500">Total Data</h2>
-                <p class="text-2xl font-semibold mt-2 text-indigo-500">0</p>
+                <p class="text-2xl font-semibold mt-2 text-indigo-500">{{ $totalData }}</p>
             </div>
         </div>
         <div class="border-2 border-teal-500 bg-white p-6 rounded-lg shadow flex items-center">
@@ -96,13 +91,15 @@
                                 <a {{-- href="{{ route('dashboard.edit', $dashboard->id) }}" --}} class="text-blue-500 hover:text-blue-700 mr-4">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form {{-- action="{{ route('dashboard.destroy', $dashboard->id) }}" method="POST" --}} style="display:inline;">
+                                <form action="{{ route('dashboard.destroy', $dashboard->npa) }}" method="POST"
+                                    style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+
                             </td>
                         </tr>
                     @endforeach

@@ -16,13 +16,24 @@ class DashboardController extends Controller
 
         // Menghitung jumlah pegawai dan cabang dengan query builder
         $totalPegawai = Pegawai::countPegawai();  // Hitung jumlah pegawai
-        $totalCabang = Cabang::countCabang();     // Hitung jumlah cabang
+        $totalCabang = Cabang::countCabang();
+        $totalData = Dashboard::countData();
 
         // Mengirim data ke view
         return view('dashboard', [
             'dashboardList' => $dashboardList,
             'totalPegawai' => $totalPegawai,
-            'totalCabang' => $totalCabang
+            'totalCabang' => $totalCabang,
+            'totalData' => $totalData
         ]);
+    }
+
+    public function destroy($npa)
+    {
+        // Call the delete method in the Dashboard model
+        Dashboard::destroyData($npa);
+
+        // Redirect back with a success message
+        return redirect()->route('dashboard')->with('success', 'Data successfully deleted');
     }
 }

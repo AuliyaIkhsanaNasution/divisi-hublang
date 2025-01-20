@@ -30,4 +30,6 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     // Route Form Input Data
     Route::get('/form', [DataPengecekanController::class, 'create'])->name('form'); // Menampilkan form
     Route::post('/form', [DataPengecekanController::class, 'store'])->name('form.store'); // Menyimpan data
+
+    Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
 });
