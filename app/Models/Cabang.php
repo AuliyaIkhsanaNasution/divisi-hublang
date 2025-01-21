@@ -17,4 +17,16 @@ class Cabang
         // Menghitung jumlah cabang
         return DB::table('cabang')->count();
     }
+
+    // Menambahkan data cabang
+    public static function store($data)
+    {
+        DB::insert('INSERT INTO cabang (nama_cabang) VALUES (?)', [$data['nama_cabang']]);
+    }
+
+    public static function destroyData($id)
+    {
+        // Delete the record from the 'cabang' table where the id matches
+        return DB::table('cabang')->where('id_cabang', $id)->delete();
+    }
 }

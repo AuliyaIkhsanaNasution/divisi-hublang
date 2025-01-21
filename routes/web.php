@@ -28,6 +28,8 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
 
     // Route Cabang
     Route::get('/cabang', [CabangController::class, 'index'])->name('cabang');
+    Route::post('/cabang', [CabangController::class, 'store'])->name('cabang.store');
+    Route::delete('/cabang/{id}', [CabangController::class, 'destroy'])->name('cabang.destroy');
 
     // Route Form Input Data
     Route::get('/form', [DataPengecekanController::class, 'create'])->name('form'); // Menampilkan form
