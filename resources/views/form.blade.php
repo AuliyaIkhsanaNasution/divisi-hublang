@@ -19,8 +19,8 @@
 
     <div class="p-6 bg-white min-h-screen flex items-center justify-center rounded-lg shadow-md">
         <div class="w-full max-w-3xl bg-white p-8">
-            <h2 class="text-2xl font-extrabold text-center text-gray-800 mb-8">Form Input Data Hasil Pengecekan Ulang Divisi
-                Hublang</h2>
+            <h2 class="text-2xl text-center text-gray-800 mb-8">Formulir Input Data Pengecekan Ulang Meter
+                Pelanggan Divisi Hublang</h2>
             <form action="{{ route('form.store') }}" method="POST" class="space-y-4">
                 @csrf
 
