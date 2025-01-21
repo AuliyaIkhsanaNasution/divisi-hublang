@@ -72,6 +72,44 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modalPegawai');
+            const openModalButton = document.getElementById('openModalButtonPegawai');
+            const editButtons = document.querySelectorAll('#openModalButtonEditPegawai');
+            const form = document.getElementById('pegawaiForm');
+
+            // Fungsi untuk membuka modal tambah data
+            openModalButton.addEventListener('click', () => {
+                document.getElementById('nama_pegawai').value = '';
+                form.action = '{{ route('pegawai.store') }}';
+                document.getElementById('method_field').value = 'POST';
+                modal.classList.remove('hidden');
+            });
+
+            // Fungsi untuk membuka modal edit data
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const namaPegawai = this.getAttribute('data-nama-pegawai');
+                    const idPegawai = this.getAttribute('data-id');
+
+                    document.getElementById('nama_pegawai').value = namaPegawai;
+                    form.action = `/pegawai/${idPegawai}`;
+                    document.getElementById('method_field').value = 'PUT';
+                    modal.classList.remove('hidden');
+                });
+            });
+
+            // Fungsi untuk menutup modal
+            const closeModalButtons = document.querySelectorAll(
+                '#closeModalButtonPegawai, #closeModalButtonPegawai2');
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modal.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

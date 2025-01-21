@@ -41,4 +41,28 @@ class PegawaiController extends Controller
         // Redirect back with a success message
         return redirect()->route('pegawai')->with('success', 'Data successfully deleted');
     }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang diterima
+        $validated = $request->validate([
+            'nama_pegawai' => 'required|string|max:255',
+        ]);
+
+        // Update data pegawai
+        Pegawai::updatePegawai($id, [
+            'nama_pegawai' => $validated['nama_pegawai']
+        ]);
+
+        return redirect()->route('pegawai')->with('success', 'pegawai berhasil diperbarui.');
+    }
+
+    public function edit($id)
+    {
+        // Ambil data pegawai berdasarkan ID
+        $pegawai = Pegawai::findPegawaiById($id);
+
+        // Kirim data pegawai ke view
+        return view('pegawai.index', compact('pegawai'));
+    }
 }

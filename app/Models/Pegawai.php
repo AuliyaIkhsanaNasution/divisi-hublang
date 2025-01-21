@@ -34,4 +34,14 @@ class Pegawai
     {
         DB::insert('INSERT INTO pegawai (nama_pegawai) VALUES (?)', [$data['nama_pegawai']]);
     }
+
+    public static function findPegawaiById($id)
+    {
+        return DB::table('pegawai')->where('id_pegawai', $id)->first();
+    }
+
+    public static function updatePegawai($id, $data)
+    {
+        return DB::table('pegawai')->where('id_pegawai', $id)->update($data);
+    }
 }

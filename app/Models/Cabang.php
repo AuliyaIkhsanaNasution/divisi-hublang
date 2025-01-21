@@ -32,7 +32,7 @@ class Cabang
 
     public static function findCabangById($id)
     {
-        return DB::table('cabangs')->where('id_cabang', $id)->first();
+        return DB::table('cabang')->where('id_cabang', $id)->first();
     }
 
     public static function updateCabang($id, $data)
