@@ -21,7 +21,7 @@ class Dashboard
     public static function destroyData($id)
     {
         // Delete the record from the 'form_inputan' table where the id matches
-        return DB::table('form_inputan')->where('id', $id)->delete();
+        return DB::table('form_inputan')->where('npa', $id)->delete();
     }
 
     public static function getByNpa($npa)
