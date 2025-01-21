@@ -29,4 +29,14 @@ class Cabang
         // Delete the record from the 'cabang' table where the id matches
         return DB::table('cabang')->where('id_cabang', $id)->delete();
     }
+
+    public static function findCabangById($id)
+    {
+        return DB::table('cabangs')->where('id_cabang', $id)->first();
+    }
+
+    public static function updateCabang($id, $data)
+    {
+        return DB::table('cabang')->where('id_cabang', $id)->update($data);
+    }
 }

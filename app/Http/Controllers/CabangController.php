@@ -43,4 +43,28 @@ class CabangController extends Controller
         // Redirect back with a success message
         return redirect()->route('cabang')->with('success', 'Data successfully deleted');
     }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang diterima
+        $validated = $request->validate([
+            'nama_cabang' => 'required|string|max:255',
+        ]);
+
+        // Update data cabang
+        Cabang::updateCabang($id, [
+            'nama_cabang' => $validated['nama_cabang']
+        ]);
+
+        return redirect()->route('cabang.index')->with('success', 'Cabang berhasil diperbarui.');
+    }
+
+    public function edit($id)
+    {
+        // Ambil data cabang berdasarkan ID
+        $cabang = Cabang::findCabangById($id);
+
+        // Kirim data cabang ke view
+        return view('cabang.index', compact('cabang'));
+    }
 }
