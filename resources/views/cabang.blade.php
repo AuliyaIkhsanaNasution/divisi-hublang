@@ -5,7 +5,16 @@
 @section('header-title', 'Dashboard')
 
 @section('content')
-    <h1 class="text-2xl font-semibold text-gray-700 mb-6 text-left">Data Cabang</h1>
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-semibold text-gray-700 text-left">Data Cabang</h1>
+        <a href="
+        {{-- {{ route('cabang.create') }} --}}
+         "
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition duration-200 flex items-center">
+            <i class="fas fa-plus mr-2"></i>
+            Tambah Data Cabang
+        </a>
+    </div>
     {{-- Tabel data cabang --}}
     <div class="overflow-x-auto mx-auto">
         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">

@@ -33,6 +33,34 @@
             </main>
         </div>
     </div>
+
+    <script>
+        // Ambil elemen tombol dan modal
+        const openModalButton = document.getElementById('openModalButton');
+        const closeModalButton = document.getElementById('closeModalButton');
+        const closeModalButton2 = document.getElementById('closeModalButton2');
+        const modal = document.getElementById('modal');
+
+        // Fungsi untuk membuka modal
+        openModalButton.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        // Fungsi untuk menutup modal
+        [closeModalButton, closeModalButton2].forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+        });
+
+        // Menutup modal saat klik di luar modal
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+
 </body>
 
 </html>

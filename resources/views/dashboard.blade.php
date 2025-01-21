@@ -94,7 +94,8 @@
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('dashboard.destroy', $dashboard->npa) }}" method="POST"
-                                    style="display:inline;">
+                                    style="display:inline;"
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700">

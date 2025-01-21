@@ -23,6 +23,8 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
 
     // Route Pegawai
     Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai');
+    Route::delete('/pegawai/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
+    Route::post('/pegawai', [PegawaiController::class, 'store'])->name('pegawai.store');
 
     // Route Cabang
     Route::get('/cabang', [CabangController::class, 'index'])->name('cabang');
