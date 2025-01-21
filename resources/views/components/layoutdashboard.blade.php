@@ -38,58 +38,39 @@
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('modal');
             const openModalButton = document.getElementById('openModalButton');
-            const closeModalButton = document.getElementById('closeModalButton');
-            const closeModalButton2 = document.getElementById('closeModalButton2');
+            const editButtons = document.querySelectorAll('#openModalButtonEdit');
+            const form = document.getElementById('cabangForm');
 
-            // Fungsi untuk membuka modal dan reset data
+            // Fungsi untuk membuka modal tambah data
             openModalButton.addEventListener('click', () => {
-                // Reset form input ketika modal tambah dibuka
                 document.getElementById('nama_cabang').value = '';
-
-                // Set form action untuk store (tambah data)
-                const form = document.querySelector('form');
                 form.action = '{{ route('cabang.store') }}';
-
-                // Tampilkan modal
+                document.getElementById('method_field').value = 'POST';
                 modal.classList.remove('hidden');
             });
 
+            // Fungsi untuk membuka modal edit data
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const namaCabang = this.getAttribute('data-nama-cabang');
+                    const idCabang = this.getAttribute('data-id');
+
+                    document.getElementById('nama_cabang').value = namaCabang;
+                    form.action = `/cabang/${idCabang}`;
+                    document.getElementById('method_field').value = 'PUT';
+                    modal.classList.remove('hidden');
+                });
+            });
+
             // Fungsi untuk menutup modal
-            [closeModalButton, closeModalButton2].forEach(button => {
+            const closeModalButtons = document.querySelectorAll('#closeModalButton, #closeModalButton2');
+            closeModalButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     modal.classList.add('hidden');
                 });
             });
-
-            // Menutup modal saat klik di luar modal
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.add('hidden');
-                }
-            });
-
-            // Tombol Edit
-            const editButtons = document.querySelectorAll('#openModalButtonEdit');
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Ambil data dari atribut data-nama-cabang dan data-id
-                    const namaCabang = this.getAttribute('data-nama-cabang');
-                    const idCabang = this.getAttribute('data-id');
-
-                    // Isi input modal dengan data yang didapat
-                    document.getElementById('nama_cabang').value = namaCabang;
-
-                    // Set form action untuk update data
-                    const form = document.querySelector('form');
-                    form.action = `/cabang/${idCabang}`;
-
-                    // Tampilkan modal
-                    modal.classList.remove('hidden');
-                });
-            });
         });
     </script>
-
 
 </body>
 

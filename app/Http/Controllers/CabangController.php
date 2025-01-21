@@ -56,7 +56,7 @@ class CabangController extends Controller
             'nama_cabang' => $validated['nama_cabang']
         ]);
 
-        return redirect()->route('cabang.index')->with('success', 'Cabang berhasil diperbarui.');
+        return redirect()->route('cabang')->with('success', 'Cabang berhasil diperbarui.');
     }
 
     public function edit($id)

@@ -21,23 +21,20 @@
                 <h2 class="text-xl font-semibold">Tambah Data Cabang</h2>
                 <button id="closeModalButton" class="text-gray-500 hover:text-gray-700">&times;</button>
             </div>
-            <form action="{{ isset($cabang) ? route('cabang.update', $cabang->id) : route('cabang.store') }}"
-                method="POST">
+            <form id="cabangForm" method="POST">
                 @csrf
-                @if (isset($cabang))
-                    @method('PUT')
-                @endif
+                <input type="hidden" id="method_field" name="_method" value="POST">
                 <div class="mb-4">
                     <label for="nama_cabang" class="block text-sm font-medium text-gray-700 mb-2">Nama Cabang</label>
                     <input type="text" id="nama_cabang" name="nama_cabang"
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        value="{{ isset($cabang) ? $cabang->nama_cabang : '' }}" required>
+                        required>
                 </div>
                 <div class="flex justify-end">
                     <button type="button" id="closeModalButton2"
                         class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg mr-2">Batal</button>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
-                        {{ isset($cabang) ? 'Update' : 'Simpan' }}
+                        Simpan
                     </button>
                 </div>
             </form>
