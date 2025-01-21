@@ -23,4 +23,16 @@ class Dashboard
         // Delete the record from the 'form_inputan' table where the id matches
         return DB::table('form_inputan')->where('id', $id)->delete();
     }
+
+    public static function getByNpa($npa)
+    {
+        return DB::table('form_inputan')->where('npa', $npa)->first();
+    }
+
+    public static function updateData($npa, $data)
+    {
+        return DB::table('form_inputan')
+            ->where('npa', $npa)
+            ->update($data);
+    }
 }

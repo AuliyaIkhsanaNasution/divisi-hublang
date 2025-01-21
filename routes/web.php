@@ -31,5 +31,9 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     Route::get('/form', [DataPengecekanController::class, 'create'])->name('form'); // Menampilkan form
     Route::post('/form', [DataPengecekanController::class, 'store'])->name('form.store'); // Menyimpan data
 
+    Route::get('/dashboard/{npa}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/dashboard/{npa}', [DashboardController::class, 'update'])->name('dashboard.update');
+
+
     Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
 });
