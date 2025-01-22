@@ -46,12 +46,22 @@ class LaporanController extends Controller
         // Format periode untuk ditampilkan
         $periode = $this->formatPeriode($startDate, $endDate);
 
+        // Path gambar logo
+        $path = public_path('img/logo.png');
+
+        // Membaca file gambar dan mengonversi menjadi base64
+        $imageData = base64_encode(file_get_contents($path));
+
+        // Menambahkan prefix untuk Base64 Image (tergantung jenis gambar, bisa png, jpeg, dll)
+        $imgSrc = 'data:image/png;base64,' . $imageData;
+
         // Data untuk PDF
         $data = [
             'title' => 'Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan',
             'laporanList' => $laporanList,
             'periode' => $periode,
             'date' => now()->format('d F Y'),
+            'imgSrc' => $imgSrc // Kirim image Base64 ke view
         ];
 
         // Generate PDF menggunakan Dompdf

@@ -9,6 +9,8 @@
     <style>
         body {
             font-size: 12px;
+            margin: 0;
+            padding: 0;
         }
 
         .text-center {
@@ -33,14 +35,51 @@
             background-color: #343a40;
             color: white;
         }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .header .logo img {
+            height: 90px;
+            /* Sesuaikan dengan ukuran logo */
+            display: inline;
+        }
+
+
+        .header .title {
+            font-size: 18px;
+            text-align: right;
+        }
+
+        /* Mengatasi masalah jika ada padding atau margin yang menyebabkan baris tidak sejajar */
+        .header .logo,
+        .header .title {
+            flex: 1;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- Header dengan logo di kiri dan teks di kanan -->
+        <div class="header">
+            <div class="logo">
+                <img src="{{ $imgSrc }}" alt="Logo">
+            </div>
+            <div class="title">
+                Divisi Hubungan Langganan
+            </div>
+        </div>
+
         <h2 class="text-center">{{ $title }}</h2>
         <p class="text-center">{{ $periode }} </p>
         <p class="text-center">Tanggal Cetak: {{ $date }}</p>
+
         <table class="table">
             <thead class="thead-dark">
                 <tr>
