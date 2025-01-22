@@ -44,13 +44,4 @@ class LaporanController extends Controller
         return response($dompdf->output(), 200)
             ->header('Content-Type', 'application/pdf');
     }
-
-    // public function destroy($npa)
-    // {
-    //     // Call the delete method in the Dashboard model
-    //     Dashboard::destroyData($npa);
-
-    //     // Redirect back with a success message
-    //     return redirect()->route('dashboard')->with('success', 'Data successfully deleted');
-    // }
 }
