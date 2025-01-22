@@ -39,21 +39,18 @@
                         <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $index + 1 }}</td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->npa }}</td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->pegawai_id }}</td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->nama_pegawai }}
+                            </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->nama_pelanggan }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->alamat }}</td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->stand_meter }}
-                            </td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
-                                {{ $laporan->tarif }}
-                            </td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->stand_meter }}</td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->tarif }}</td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->hasil_temuan }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                 {{ $laporan->arahan_tindak_lanjut }}</td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->cabang_id }}
-                            </td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->nama_cabang }}</td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                 {{ \Carbon\Carbon::parse($laporan->tanggal_input)->format('d F Y') }}
                             </td>
@@ -64,6 +61,12 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="flex justify-end mt-4">
+            <a href="{{ route('pdf') }}" target="_blank"
+                class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition duration-200">
+                Cetak PDF
+            </a>
         </div>
     </div>
 

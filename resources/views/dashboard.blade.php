@@ -80,7 +80,7 @@
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                 {{ $dashboard->arahan_tindak_lanjut }}</td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->cabang_id }}
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->nama_cabang }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                 {{ \Carbon\Carbon::parse($dashboard->tanggal_input)->format('d F Y') }}

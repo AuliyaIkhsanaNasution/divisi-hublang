@@ -8,8 +8,24 @@ class Dashboard
 {
     public static function getAll()
     {
-        // Mengambil semua data dari tabel 'cabang'
-        return DB::table('form_inputan')->get();
+        // Menggunakan query builder dengan join untuk mengambil data dari 'form_inputan' dan 'cabang'
+        return DB::table('form_inputan')
+            ->join('cabang', 'form_inputan.cabang_id', '=', 'cabang.id_cabang') // Gabungkan dengan tabel cabang
+            ->select(
+                'form_inputan.npa',
+                'form_inputan.pegawai_id',
+                'form_inputan.nama_pelanggan',
+                'form_inputan.alamat',
+                'form_inputan.stand_meter',
+                'form_inputan.tarif',
+                'form_inputan.hasil_temuan',
+                'form_inputan.arahan_tindak_lanjut',
+                'form_inputan.cabang_id',
+                'cabang.nama_cabang as nama_cabang', // Ambil nama cabang
+                'form_inputan.tanggal_input',
+                'form_inputan.tanggal_cek_ulang'
+            )
+            ->get(); // Ambil hasilnya
     }
 
     public static function countData()
