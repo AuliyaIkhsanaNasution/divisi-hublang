@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class DataPengecekanController extends Controller
 {
-    /**
-     * Menampilkan form input data.
-     */
     public function create()
     {
         // Ambil data pegawai dari session
@@ -27,9 +24,6 @@ class DataPengecekanController extends Controller
         return view('form', compact('cabang', 'pegawai'));
     }
 
-    /**
-     * Menyimpan data dari form ke database.
-     */
     public function store(Request $data)
     {
         // Validasi input
@@ -97,9 +91,6 @@ class DataPengecekanController extends Controller
         return view('form', compact('data', 'cabang', 'pegawai'));
     }
 
-    /**
-     * Memperbarui data ke database.
-     */
     public function update(Request $request, $npa)
     {
         // Validasi input
