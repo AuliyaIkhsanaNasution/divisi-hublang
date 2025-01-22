@@ -48,4 +48,5 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     // Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
     Route::get('/pdf', [LaporanController::class, 'exportPdf'])->name('pdf');
+    Route::get('/laporan/filter', [LaporanController::class, 'index'])->name('laporan.filter');
 });

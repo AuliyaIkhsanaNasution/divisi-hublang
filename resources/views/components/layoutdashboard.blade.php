@@ -110,6 +110,16 @@
             });
         });
     </script>
+
+    <script>
+        // JavaScript untuk toggle form
+        const toggleFormButton = document.getElementById('toggleFormButton');
+        const filterForm = document.getElementById('filterForm');
+
+        toggleFormButton.addEventListener('click', () => {
+            filterForm.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>

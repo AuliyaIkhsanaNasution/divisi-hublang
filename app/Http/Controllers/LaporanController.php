@@ -6,26 +6,45 @@ use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\Laporan;
 use Dompdf\Dompdf;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil data dari model Laporan
-        $laporanList = Laporan::getAllLaporan();
+        // Ambil parameter filter dari request
+        $startDate = $request->start_date;
+        $endDate = $request->end_date;
+        $pegawaiId = $request->pegawai_id;
+        $standMeter = $request->stand_meter;
+        $hasilTemuan = $request->hasil_temuan;
 
-        // Mengirim data ke view
+        // Query data dengan filter
+        $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan);
+
+        // Mengirim data pegawai untuk dropdown
+        $pegawaiList = DB::table('pegawai')->select('id_pegawai', 'nama_pegawai')->get();
+
+        // Kirim data ke view
         return view('laporan', [
-            'laporanList' => $laporanList
+            'laporanList' => $laporanList,
+            'pegawaiList' => $pegawaiList
         ]);
     }
 
-    public function exportPdf()
+    public function exportPdf(Request $request)
     {
-        // Ambil data dari model
-        $laporanList = Laporan::getAllLaporan();
+        // Ambil parameter filter dari request
+        $startDate = $request->start_date;
+        $endDate = $request->end_date;
+        $pegawaiId = $request->pegawai_id;
+        $standMeter = $request->stand_meter;
+        $hasilTemuan = $request->hasil_temuan;
 
-        // Data untuk dikirim ke view
+        // Query data dengan filter
+        $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan);
+
+        // Data untuk PDF
         $data = [
             'title' => 'Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan',
             'laporanList' => $laporanList,
@@ -40,7 +59,6 @@ class LaporanController extends Controller
         $dompdf->setPaper('A4', 'landscape');
         $dompdf->render();
 
-        // Menampilkan PDF di browser tanpa mendownload
         return response($dompdf->output(), 200)
             ->header('Content-Type', 'application/pdf');
     }

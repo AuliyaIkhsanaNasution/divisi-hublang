@@ -5,6 +5,71 @@
 @section('header-title', 'Laporan')
 
 @section('content')
+    <div class="relative">
+        <!-- Tombol untuk membuka form -->
+        <button id="toggleFormButton"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition duration-200">
+            Filter
+        </button>
+
+        <!-- Form yang muncul/dihilangkan -->
+        <div id="filterForm" class="absolute right-0 mt-2 w-96 bg-white shadow-lg rounded-lg p-4 hidden">
+            <form method="GET" action="{{ route('laporan.filter') }}" class="space-y-4">
+                <!-- Tanggal Mulai -->
+                <div>
+                    <label for="start_date" class="block text-sm font-medium">Tanggal Mulai</label>
+                    <input type="date" id="start_date" name="start_date" value="{{ request()->start_date }}"
+                        class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Tanggal Selesai -->
+                <div>
+                    <label for="end_date" class="block text-sm font-medium">Tanggal Selesai</label>
+                    <input type="date" id="end_date" name="end_date" value="{{ request()->end_date }}"
+                        class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Nama Pegawai -->
+                <div>
+                    <label for="pegawai_id" class="block text-sm font-medium">Nama Pegawai</label>
+                    <select id="pegawai_id" name="pegawai_id"
+                        class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">-- Semua Pegawai --</option>
+                        @foreach ($pegawaiList as $pegawai)
+                            <option value="{{ $pegawai->id_pegawai }}"
+                                {{ request()->pegawai_id == $pegawai->id_pegawai ? 'selected' : '' }}>
+                                {{ $pegawai->nama_pegawai }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Stand Meter -->
+                <div>
+                    <label for="stand_meter" class="block text-sm font-medium">Stand Meter</label>
+                    <input type="text" id="stand_meter" name="stand_meter" value="{{ request()->stand_meter }}"
+                        class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Masukkan nilai stand meter">
+                </div>
+
+                <!-- Hasil Temuan -->
+                <div>
+                    <label for="hasil_temuan" class="block text-sm font-medium">Hasil Temuan</label>
+                    <input type="text" id="hasil_temuan" name="hasil_temuan" value="{{ request()->hasil_temuan }}"
+                        class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Masukkan hasil temuan">
+                </div>
+
+                <!-- Tombol Submit -->
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-6 py-2 rounded-lg text-sm hover:bg-blue-600 transition duration-200">
+                        Terapkan Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="mt-2">
         <h2 class="text-xl text-center mb-4">Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan</h2>
@@ -44,13 +109,15 @@
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->nama_pelanggan }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->alamat }}</td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->stand_meter }}</td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->stand_meter }}
+                            </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->tarif }}</td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->hasil_temuan }}
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                 {{ $laporan->arahan_tindak_lanjut }}</td>
-                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->nama_cabang }}</td>
+                            <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $laporan->nama_cabang }}
+                            </td>
                             <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                 {{ \Carbon\Carbon::parse($laporan->tanggal_input)->format('d F Y') }}
                             </td>
@@ -63,7 +130,7 @@
             </table>
         </div>
         <div class="flex justify-end mt-4">
-            <a href="{{ route('pdf') }}" target="_blank"
+            <a href="{{ route('pdf', request()->all()) }}" target="_blank"
                 class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition duration-200">
                 Cetak PDF
             </a>
