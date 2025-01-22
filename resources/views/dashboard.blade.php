@@ -90,7 +90,8 @@
                             </td>
                             <td class="py-4 px-2 sm:px-4 text-center text-xs">
                                 <!-- Edit and Delete Actions -->
-                                <a {{-- href="{{ route('dashboard.edit', $dashboard->id) }}" --}} class="text-blue-500 hover:text-blue-700 mr-4">
+                                <a href="{{ route('form.edit', $dashboard->npa) }}"
+                                    class="text-blue-500 hover:text-blue-700 mr-4">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('dashboard.destroy', $dashboard->npa) }}" method="POST"

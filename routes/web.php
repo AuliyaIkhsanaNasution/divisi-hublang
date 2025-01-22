@@ -44,6 +44,11 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     // Route Form Input Data
     Route::get('/form', [DataPengecekanController::class, 'create'])->name('form'); // Menampilkan form
     Route::post('/form', [DataPengecekanController::class, 'store'])->name('form.store'); // Menyimpan data
+    // Route untuk edit data
+    Route::get('/form/{id}/edit', [DataPengecekanController::class, 'edit'])->name('form.edit');
+
+    // Route untuk update data
+    Route::put('/form/{id}/update', [DataPengecekanController::class, 'update'])->name('form.update');
 
     // Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
