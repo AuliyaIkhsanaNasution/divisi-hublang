@@ -47,7 +47,7 @@
                         <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Nama Pelanggan
                         </th>
                         <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Alamat</th>
-                        <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Stand Meter
+                        <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Stan Meter
                         </th>
                         <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Tarif</th>
                         <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Hasil Temuan

@@ -49,7 +49,7 @@
                     <th>Nama Pegawai</th>
                     <th>Nama Pelanggan</th>
                     <th>Alamat</th>
-                    <th>Stand Meter</th>
+                    <th>Stan Meter</th>
                     <th>Tarif</th>
                     <th>Hasil Temuan</th>
                     <th>Arahan Tindak Lanjut</th>
