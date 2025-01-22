@@ -6,11 +6,16 @@
 
 @section('content')
     <div class="relative">
-        <!-- Tombol untuk membuka form -->
-        <button id="toggleFormButton"
-            class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition duration-200">
-            Filter
-        </button>
+        <div class="flex justify-end">
+            <button id="toggleFormButton"
+                class="bg-blue-500 text-white px-8 py-2 mx-4 rounded-lg text-sm hover:bg-blue-600 transition duration-200">
+                Filter
+            </button>
+            <a href="{{ route('pdf', request()->all()) }}" target="_blank"
+                class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition duration-200">
+                Cetak PDF
+            </a>
+        </div>
 
         <!-- Form yang muncul/dihilangkan -->
         <div id="filterForm" class="absolute right-0 mt-2 w-96 bg-white shadow-lg rounded-lg p-4 hidden">
@@ -128,12 +133,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="flex justify-end mt-4">
-            <a href="{{ route('pdf', request()->all()) }}" target="_blank"
-                class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition duration-200">
-                Cetak PDF
-            </a>
         </div>
     </div>
 
