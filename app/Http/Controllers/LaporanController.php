@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Dashboard;
 use App\Models\Laporan;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
@@ -44,10 +43,14 @@ class LaporanController extends Controller
         // Query data dengan filter
         $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan);
 
+        // Format periode untuk ditampilkan
+        $periode = $this->formatPeriode($startDate, $endDate);
+
         // Data untuk PDF
         $data = [
             'title' => 'Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan',
             'laporanList' => $laporanList,
+            'periode' => $periode,
             'date' => now()->format('d F Y'),
         ];
 
@@ -61,5 +64,18 @@ class LaporanController extends Controller
 
         return response($dompdf->output(), 200)
             ->header('Content-Type', 'application/pdf');
+    }
+
+    private function formatPeriode($startDate, $endDate)
+    {
+        if ($startDate && $endDate) {
+            return "Periode: " . date('d-m-Y', strtotime($startDate)) . " s/d " . date('d-m-Y', strtotime($endDate));
+        } elseif ($startDate) {
+            return "Periode Mulai: " . date('d-m-Y', strtotime($startDate));
+        } elseif ($endDate) {
+            return "Periode Sampai: " . date('d-m-Y', strtotime($endDate));
+        } else {
+            return "Periode: Semua Waktu";
+        }
     }
 }

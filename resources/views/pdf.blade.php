@@ -39,6 +39,7 @@
 <body>
     <div class="container">
         <h2 class="text-center">{{ $title }}</h2>
+        <p class="text-center">{{ $periode }} </p>
         <p class="text-center">Tanggal Cetak: {{ $date }}</p>
         <table class="table">
             <thead class="thead-dark">
