@@ -57,7 +57,7 @@ class LaporanController extends Controller
 
         // Data untuk PDF
         $data = [
-            'title' => 'Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan',
+            'title' => 'Rekapitulasi Hasil Pengecekan Ulang Divisi Hublang',
             'laporanList' => $laporanList,
             'periode' => $periode,
             'date' => now()->format('d F Y'),

@@ -1,7 +1,7 @@
 <div class="bg-white text-black w-64 min-h-screen flex flex-col shadow-lg fixed z-10">
     <!-- Logo Section -->
     <div class="text-center py-2 border-b border-gray-200">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="mx-auto h-20">
+        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="mx-auto h-20 m-2">
         <span class="text-black font-medium">DIVISI HUBUNGAN LANGGANAN</span>
     </div>
 
