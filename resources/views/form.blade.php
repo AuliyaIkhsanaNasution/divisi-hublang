@@ -34,7 +34,8 @@
                     <label for="npa" class="block text-sm font-semibold text-gray-700">NPA</label>
                     <input type="text" id="npa" name="npa" placeholder="Masukkan NPA"
                         value="{{ old('npa', $data->npa ?? '') }}"
-                        class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
+                        class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700"
+                        @if (isset($data)) readonly @endif>
                 </div>
 
                 <!-- Tanggal Input Field -->

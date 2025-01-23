@@ -12,9 +12,24 @@
 
         <!-- Menampilkan error login -->
         @if ($errors->has('login'))
-            <div class="mb-4 text-red-500 text-sm">
-                {{ $errors->first('login') }}
-            </div>
+            <script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Username atau password salah!",
+                });
+            </script>
+        @endif
+
+        <!-- Menampilkan BERHASIL logout -->
+        @if (session('logout'))
+            <script>
+                Swal.fire({
+                    icon: "success",
+                    title: "Berhasil logout!",
+                    text: "Sampai Jumpa!",
+                });
+            </script>
         @endif
 
         <form method="POST" action="{{ route('login.post') }}">

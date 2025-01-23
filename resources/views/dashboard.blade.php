@@ -6,6 +6,38 @@
 
 @section('content')
 
+    <!-- Menampilkan BERHASIL login -->
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Berhasil login!",
+                text: "Selamat Datang!",
+            });
+        </script>
+
+        <!-- Menampilkan SweetAlert2 untuk Success -->
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                });
+            </script>
+        @endif
+
+        <!-- Menampilkan SweetAlert2 untuk Error -->
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: '{{ session('error') }}',
+                });
+            </script>
+        @endif
+
+    @endif
+
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
         @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
         <div class="border-2 border-indigo-500 bg-white p-6 rounded-lg shadow flex items-center">
@@ -85,7 +117,8 @@
                                 </td>
                                 <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                     {{ $dashboard->stand_meter }}</td>
-                                <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->tarif }}</td>
+                                <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">{{ $dashboard->tarif }}
+                                </td>
                                 <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">
                                     {{ $dashboard->hasil_temuan }}</td>
                                 <td class="py-4 px-2 sm:px-4 text-gray-700 text-center text-xs">

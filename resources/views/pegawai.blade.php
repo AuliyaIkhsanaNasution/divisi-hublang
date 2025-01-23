@@ -5,6 +5,27 @@
 @section('header-title', 'Dashboard')
 
 @section('content')
+
+    <!-- Menampilkan SweetAlert2 untuk Success -->
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    <!-- Menampilkan SweetAlert2 untuk Error -->
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-semibold text-gray-700 text-left">Data Pegawai</h1>
         <button id="openModalButtonPegawai"
