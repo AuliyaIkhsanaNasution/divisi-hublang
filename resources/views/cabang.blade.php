@@ -44,7 +44,7 @@
     {{-- Tabel data cabang --}}
     <div class="overflow-x-auto mx-auto">
         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
-            <thead class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <thead class="bg-blue-500 text-white">
                 <tr>
                     <th class="py-4 px-6 text-center text-sm font-medium uppercase tracking-wide">No</th>
                     <th class="py-4 px-6 text-center text-sm font-medium uppercase tracking-wide">Nama Cabang</th>

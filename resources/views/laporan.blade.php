@@ -80,7 +80,7 @@
         <h2 class="text-xl text-center mb-4">Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan</h2>
         <div class="overflow-x-auto mx-auto">
             <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
-                <thead class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+                <thead class="bg-blue-500 text-white">
                     <tr>
                         <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">No</th>
                         <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">NPA</th>
