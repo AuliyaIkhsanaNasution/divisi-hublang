@@ -31,5 +31,6 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'checkLogin' => \App\Http\Middleware\CheckLogin::class, // Middleware custom yang akan Anda buat
         // Middleware lainnya dapat ditambahkan di sini
+        'role' => \App\Http\Middleware\CheckRole::class,
     ];
 }
