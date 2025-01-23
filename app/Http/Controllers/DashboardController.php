@@ -6,19 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\Pegawai;
 use App\Models\Cabang;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil data dari model Dashboard
-        $dashboardList = Dashboard::getAll();
+        // Ambil pegawai_id dari session
+        $pegawaiId = Session::get('pegawai.id');
+
+        // Ambil data dashboard sesuai pegawai_id
+        $dashboardList = Dashboard::getAll($pegawaiId);
 
         $totalPegawai = Pegawai::countPegawai();  // Hitung jumlah pegawai
         $totalCabang = Cabang::countCabang();
         $totalData = Dashboard::countData();
 
-        // Mengirim data ke view
+        // Kirim data ke view
         return view('dashboard', [
             'dashboardList' => $dashboardList,
             'totalPegawai' => $totalPegawai,
@@ -26,6 +30,8 @@ class DashboardController extends Controller
             'totalData' => $totalData
         ]);
     }
+
+
 
     public function destroy($npa)
     {

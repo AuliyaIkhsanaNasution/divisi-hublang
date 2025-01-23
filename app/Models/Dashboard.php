@@ -6,9 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 class Dashboard
 {
-    public static function getAll()
+    public static function getAll($pegawaiId)
     {
-        // Menggunakan query builder dengan join untuk mengambil data dari 'form_inputan' dan 'cabang'
         return DB::table('form_inputan')
             ->join('cabang', 'form_inputan.cabang_id', '=', 'cabang.id_cabang') // Gabungkan dengan tabel cabang
             ->select(
@@ -25,8 +24,11 @@ class Dashboard
                 'form_inputan.tanggal_input',
                 'form_inputan.tanggal_cek_ulang'
             )
-            ->get(); // Ambil hasilnya
+            ->where('form_inputan.pegawai_id', $pegawaiId) // Filter berdasarkan ID pengirim form
+            ->get();
     }
+
+
 
     public static function countData()
     {
