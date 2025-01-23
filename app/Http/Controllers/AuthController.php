@@ -33,6 +33,7 @@ class AuthController extends Controller
                     'id' => $pegawai->id_pegawai,
                     'username' => $pegawai->username,
                     'nama' => $pegawai->nama_pegawai,
+                    'role' => $pegawai->role
                 ]);
 
                 return redirect()->route('dashboard')->with('success', 'Berhasil login!');
