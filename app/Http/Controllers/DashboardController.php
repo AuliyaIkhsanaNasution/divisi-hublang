@@ -12,9 +12,8 @@ class DashboardController extends Controller
     public function index()
     {
         // Mengambil data dari model Dashboard
-        $dashboardList = Dashboard::getAll();  // Ambil semua data dashboard
+        $dashboardList = Dashboard::getAll();
 
-        // Menghitung jumlah pegawai dan cabang dengan query builder
         $totalPegawai = Pegawai::countPegawai();  // Hitung jumlah pegawai
         $totalCabang = Cabang::countCabang();
         $totalData = Dashboard::countData();
