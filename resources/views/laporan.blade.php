@@ -77,7 +77,7 @@
     </div>
 
     <div class="mt-2">
-        <h2 class="text-xl text-center mb-4">Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan</h2>
+        <h2 class="text-xl text-center mb-4">Laporan Hasil Pengecekan Ulang Divisi Hublang</h2>
         <div class="overflow-x-auto mx-auto">
             <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
                 <thead class="bg-blue-500 text-white">
