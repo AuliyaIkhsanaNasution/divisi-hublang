@@ -39,7 +39,7 @@ class PegawaiController extends Controller
         Pegawai::destroyData($id);
 
         // Redirect back with a success message
-        return redirect()->route('pegawai')->with('success', 'Data successfully deleted');
+        return redirect()->route('pegawai')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function update(Request $request, $id)

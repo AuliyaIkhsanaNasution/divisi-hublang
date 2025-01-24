@@ -41,7 +41,7 @@ class CabangController extends Controller
         Cabang::destroyData($id);
 
         // Redirect back with a success message
-        return redirect()->route('cabang')->with('success', 'Data successfully deleted');
+        return redirect()->route('cabang')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function update(Request $request, $id)
