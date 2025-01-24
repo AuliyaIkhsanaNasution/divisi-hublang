@@ -39,6 +39,6 @@ class DashboardController extends Controller
         Dashboard::destroyData($npa);
 
         // Redirect back with a success message
-        return redirect()->route('dashboard')->with('success', 'Data successfully deleted');
+        return redirect()->route('dashboard')->with('success', 'Data Berhasil Dihapus');
     }
 }
