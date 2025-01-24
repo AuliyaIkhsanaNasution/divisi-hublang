@@ -9,6 +9,22 @@ use App\Http\Controllers\DataPengecekanController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Middleware\CheckRole;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Hash;
+
+// Route::get('/hash-all-passwords', function () {
+//     $users = DB::table('pegawai')->get();
+
+//     foreach ($users as $user) {
+//         // Update semua password menjadi hash bcrypt dengan password "12345"
+//         DB::table('pegawai')
+//             ->where('id_pegawai', $user->id_pegawai)
+//             ->update(['password' => Hash::make('12345')]);
+//     }
+
+//     return 'Semua password telah di-hash menjadi "12345"!';
+// });
+
 
 // Route untuk Login Form (GET)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
