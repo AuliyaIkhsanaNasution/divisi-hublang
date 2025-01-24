@@ -1,6 +1,6 @@
 @extends('components.layout')
 
-@section('title', 'Halaman Login')
+@section('title', 'Login | Divisi Hubungan Langganan')
 
 @section('content')
     <div class="bg-white shadow-lg rounded-lg p-8">

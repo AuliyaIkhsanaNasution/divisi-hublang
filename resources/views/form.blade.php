@@ -1,6 +1,6 @@
 @extends('components.layoutdashboard')
 
-@section('title', 'Input Data Pengecekan Meter')
+@section('title', 'Input Data Pengecekan Meter | Divisi Hubungan Langganan')
 
 @section('header-title', 'Dashboard')
 
