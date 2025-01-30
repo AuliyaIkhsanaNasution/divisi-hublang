@@ -34,6 +34,14 @@
                         class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
+                <!-- NPA pelanggan -->
+                <div>
+                    <label for="npa" class="block text-sm font-medium">NPA Pelanggan</label>
+                    <input type="text" id="npa" name="npa" value="{{ request()->npa }}"
+                        class="mt-1 w-full border rounded px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Masukkan NPA Pelanggan">
+                </div>
+
                 <!-- Nama Pegawai -->
                 <div>
                     <label for="pegawai_id" class="block text-sm font-medium">Nama Pegawai</label>

@@ -29,7 +29,7 @@ LEFT JOIN cabang ON form_inputan.cabang_id = cabang.id_cabang
 ");
     }
 
-    public static function getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan)
+    public static function getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan, $npa)
     {
         $query = DB::table('form_inputan')
             ->leftJoin('pegawai', 'form_inputan.pegawai_id', '=', 'pegawai.id_pegawai')
@@ -53,6 +53,9 @@ LEFT JOIN cabang ON form_inputan.cabang_id = cabang.id_cabang
         // Terapkan filter jika ada
         if ($startDate && $endDate) {
             $query->whereBetween('form_inputan.tanggal_input', [$startDate, $endDate]);
+        }
+        if ($npa) {
+            $query->where('form_inputan.npa', 'like', "%$npa%");
         }
         if ($pegawaiId) {
             $query->where('form_inputan.pegawai_id', $pegawaiId);
