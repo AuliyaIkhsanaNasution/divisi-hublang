@@ -17,9 +17,10 @@ class LaporanController extends Controller
         $pegawaiId = $request->pegawai_id;
         $standMeter = $request->stand_meter;
         $hasilTemuan = $request->hasil_temuan;
+        $npa = $request->npa;
 
         // Query data dengan filter
-        $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan);
+        $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan, $npa);
 
         // Mengirim data pegawai untuk dropdown
         $pegawaiList = DB::table('pegawai')->select('id_pegawai', 'nama_pegawai')->get();
@@ -39,9 +40,10 @@ class LaporanController extends Controller
         $pegawaiId = $request->pegawai_id;
         $standMeter = $request->stand_meter;
         $hasilTemuan = $request->hasil_temuan;
+        $npa = $request->npa;
 
         // Query data dengan filter
-        $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan);
+        $laporanList = Laporan::getFilteredLaporan($startDate, $endDate, $pegawaiId, $standMeter, $hasilTemuan, $npa);
 
         // Format periode untuk ditampilkan
         $periode = $this->formatPeriode($startDate, $endDate);
@@ -57,7 +59,7 @@ class LaporanController extends Controller
 
         // Data untuk PDF
         $data = [
-            'title' => 'Rekapitulasi Laporan Inputan Pengecekan Ulang Meter Pelanggan',
+            'title' => 'Rekapitulasi Hasil Pengecekan Ulang Divisi Hublang',
             'laporanList' => $laporanList,
             'periode' => $periode,
             'date' => now()->format('d F Y'),

@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -15,12 +17,15 @@
 
         .text-center {
             text-align: center;
+            margin: 0;
+            padding: 0;
+            font-size: 15px
         }
 
         .table {
-            margin-top: 20px;
             border-collapse: collapse;
             width: 100%;
+            margin-top: 8px
         }
 
         .table th,
@@ -37,47 +42,59 @@
         }
 
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            display: table;
             width: 100%;
+            table-layout: fixed;
+        }
+
+        .header .logo,
+        .header .title,
+        .header .division {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .header .logo {
+            width: 25%;
+            text-align: center;
+        }
+
+
+        .header .title {
+            width: 50%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold
+        }
+
+        .header .division {
+            width: 25%;
+            text-align: right;
+            font-size: 20px;
         }
 
         .header .logo img {
-            height: 90px;
-            /* Sesuaikan dengan ukuran logo */
-            display: inline;
-        }
-
-
-        .header .title {
-            font-size: 18px;
-            text-align: right;
-        }
-
-        /* Mengatasi masalah jika ada padding atau margin yang menyebabkan baris tidak sejajar */
-        .header .logo,
-        .header .title {
-            flex: 1;
+            max-width: 30%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- Header dengan logo di kiri dan teks di kanan -->
         <div class="header">
             <div class="logo">
                 <img src="{{ $imgSrc }}" alt="Logo">
             </div>
-            <div class="title">
+            <div class="title text-center">
+                {{ $title }}
+            </div>
+            <div class="division">
                 Divisi Hubungan Langganan
             </div>
         </div>
 
-        <h2 class="text-center">{{ $title }}</h2>
-        <p class="text-center">{{ $periode }} </p>
+        <p class="text-center">{{ $periode }}</p>
         <p class="text-center">Tanggal Cetak: {{ $date }}</p>
 
         <table class="table">

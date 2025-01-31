@@ -1,7 +1,7 @@
 <div class="bg-white text-black w-64 min-h-screen flex flex-col shadow-lg fixed z-10">
     <!-- Logo Section -->
     <div class="text-center py-2 border-b border-gray-200">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="mx-auto h-20">
+        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="mx-auto h-20 m-2">
         <span class="text-black font-medium">DIVISI HUBUNGAN LANGGANAN</span>
     </div>
 
@@ -20,7 +20,8 @@
             </span>
         </a>
         <a href="/pegawai"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('pegawai') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}">
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('pegawai') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}"
+            @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
             <span class="flex items-center">
                 <svg class="h-5 w-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -33,7 +34,8 @@
             </span>
         </a>
         <a href="/cabang"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('cabang') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}">
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('cabang') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}"
+            @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
             <span class="flex items-center">
                 <svg class="h-5 w-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
@@ -55,7 +57,8 @@
             </span>
         </a>
         <a href="/laporan"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('laporan') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}">
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition {{ request()->is('laporan') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : '' }}"
+            @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
             <span class="flex items-center">
                 <svg class="h-5 w-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">

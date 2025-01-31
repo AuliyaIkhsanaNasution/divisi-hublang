@@ -1,10 +1,31 @@
 @extends('components.layoutdashboard')
 
-@section('title', 'Data Pegawai')
+@section('title', 'Data Pegawai | Divisi Hubungan Langganan')
 
 @section('header-title', 'Dashboard')
 
 @section('content')
+
+    <!-- Menampilkan SweetAlert2 untuk Success -->
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '{{ session('success') }}',
+            });
+        </script>
+    @endif
+
+    <!-- Menampilkan SweetAlert2 untuk Error -->
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: '{{ session('error') }}',
+            });
+        </script>
+    @endif
+
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-semibold text-gray-700 text-left">Data Pegawai</h1>
         <button id="openModalButtonPegawai"
@@ -44,7 +65,7 @@
     {{-- Tabel data pegawai --}}
     <div class="overflow-x-auto mx-auto">
         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
-            <thead class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+            <thead class="bg-blue-500 text-white">
                 <tr>
                     <th class="py-4 px-6 text-center text-sm font-medium uppercase tracking-wide">No</th>
                     <th class="py-4 px-6 text-center text-sm font-medium uppercase tracking-wide">Nama</th>

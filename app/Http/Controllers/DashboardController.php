@@ -6,20 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\Pegawai;
 use App\Models\Cabang;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Mengambil data dari model Dashboard
-        $dashboardList = Dashboard::getAll();  // Ambil semua data dashboard
+        // Ambil pegawai_id dari session
+        $pegawaiId = Session::get('pegawai.id');
 
-        // Menghitung jumlah pegawai dan cabang dengan query builder
+        // Ambil data dashboard sesuai pegawai_id
+        $dashboardList = Dashboard::getAll($pegawaiId);
+
         $totalPegawai = Pegawai::countPegawai();  // Hitung jumlah pegawai
         $totalCabang = Cabang::countCabang();
         $totalData = Dashboard::countData();
 
-        // Mengirim data ke view
+        // Kirim data ke view
         return view('dashboard', [
             'dashboardList' => $dashboardList,
             'totalPegawai' => $totalPegawai,
@@ -28,12 +31,14 @@ class DashboardController extends Controller
         ]);
     }
 
+
+
     public function destroy($npa)
     {
         // Call the delete method in the Dashboard model
         Dashboard::destroyData($npa);
 
         // Redirect back with a success message
-        return redirect()->route('dashboard')->with('success', 'Data successfully deleted');
+        return redirect()->route('dashboard')->with('success', 'Data Berhasil Dihapus');
     }
 }

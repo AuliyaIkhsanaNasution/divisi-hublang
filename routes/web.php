@@ -7,6 +7,24 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DataPengecekanController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Middleware\CheckLogin;
+use App\Http\Middleware\CheckRole;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Hash;
+
+// Route::get('/hash-all-passwords', function () {
+//     $users = DB::table('pegawai')->get();
+
+//     foreach ($users as $user) {
+//         // Update semua password menjadi hash bcrypt dengan password "12345"
+//         DB::table('pegawai')
+//             ->where('id_pegawai', $user->id_pegawai)
+//             ->update(['password' => Hash::make('12345')]);
+//     }
+
+//     return 'Semua password telah di-hash menjadi "12345"!';
+// });
+
 
 // Route untuk Login Form (GET)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
@@ -17,16 +35,8 @@ Route::post('/', [AuthController::class, 'login'])->name('login.post');
 // Route untuk Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-// Grup Route dengan Middleware 'checkLogin' untuk route yang memerlukan login
-Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
-
-    // Route Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dashboard/{npa}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
-    Route::put('/dashboard/{npa}', [DashboardController::class, 'update'])->name('dashboard.update');
-    Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
-
+// Halaman hanya untuk admin
+Route::middleware([CheckLogin::class, CheckRole::class . ':admin'])->group(function () {
     // Route Pegawai
     Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai');
     Route::delete('/pegawai/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
@@ -41,17 +51,25 @@ Route::middleware(\App\Http\Middleware\CheckLogin::class)->group(function () {
     Route::put('/cabang/{id}', [CabangController::class, 'update'])->name('cabang.update');
     Route::delete('/cabang/{id}', [CabangController::class, 'destroy'])->name('cabang.destroy');
 
-    // Route Form Input Data
-    Route::get('/form', [DataPengecekanController::class, 'create'])->name('form'); // Menampilkan form
-    Route::post('/form', [DataPengecekanController::class, 'store'])->name('form.store'); // Menyimpan data
-    // Route untuk edit data
-    Route::get('/form/{id}/edit', [DataPengecekanController::class, 'edit'])->name('form.edit');
-
-    // Route untuk update data
-    Route::put('/form/{id}/update', [DataPengecekanController::class, 'update'])->name('form.update');
 
     // Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
     Route::get('/pdf', [LaporanController::class, 'exportPdf'])->name('pdf');
     Route::get('/laporan/filter', [LaporanController::class, 'index'])->name('laporan.filter');
+});
+
+// Halaman yang bisa diakses semua user
+Route::middleware(CheckLogin::class)->group(function () {
+
+    // Route Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/{npa}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/dashboard/{npa}', [DashboardController::class, 'update'])->name('dashboard.update');
+    Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
+
+    // Route Data Pengecekan
+    Route::get('/form', [DataPengecekanController::class, 'create'])->name('form'); // Menampilkan form
+    Route::post('/form', [DataPengecekanController::class, 'store'])->name('form.store'); // Menyimpan data
+    Route::get('/form/{id}/edit', [DataPengecekanController::class, 'edit'])->name('form.edit');
+    Route::put('/form/{id}/update', [DataPengecekanController::class, 'update'])->name('form.update');
 });

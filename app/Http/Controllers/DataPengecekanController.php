@@ -38,7 +38,7 @@ class DataPengecekanController extends Controller
             'arahan_tindak_lanjut' => 'required|string',
             'cabang_id' => 'required|integer',
             'tanggal_cek_ulang' => 'required|date',
-            'tanggal_cetak' => 'required|date'
+            // 'tanggal_cetak' => 'required|date'
 
         ]);
 
@@ -59,7 +59,7 @@ class DataPengecekanController extends Controller
             'arahan_tindak_lanjut' => $data->arahan_tindak_lanjut,
             'cabang_id' => $data->cabang_id,
             'tanggal_cek_ulang' => $data->tanggal_cek_ulang,
-            'tanggal_cetak' => $data->tanggal_cetak,
+            // 'tanggal_cetak' => $data->tanggal_cetak,
         ];
 
         // Gunakan Query Builder untuk menyimpan data
@@ -105,7 +105,7 @@ class DataPengecekanController extends Controller
             'arahan_tindak_lanjut' => 'required|string',
             'cabang_id' => 'required|integer',
             'tanggal_cek_ulang' => 'required|date',
-            'tanggal_cetak' => 'required|date'
+            // 'tanggal_cetak' => 'required|date'
         ]);
 
         // Data untuk diupdate
@@ -120,7 +120,7 @@ class DataPengecekanController extends Controller
             'arahan_tindak_lanjut' => $request->arahan_tindak_lanjut,
             'cabang_id' => $request->cabang_id,
             'tanggal_cek_ulang' => $request->tanggal_cek_ulang,
-            'tanggal_cetak' => $request->tanggal_cetak,
+            // 'tanggal_cetak' => $request->tanggal_cetak,
         ];
 
         // Update data di database

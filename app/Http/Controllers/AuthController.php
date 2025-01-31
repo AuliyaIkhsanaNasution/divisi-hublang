@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Pegawai;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -26,14 +27,14 @@ class AuthController extends Controller
         $pegawai = Pegawai::findByUsername($request->username);
 
         if ($pegawai) {
-            // Cek password tanpa hash (bandingkan langsung dengan password yang disimpan)
-            if ($request->password === $pegawai->password) {
+            // Cek password menggunakan Hash::check
+            if (Hash::check($request->password, $pegawai->password)) {
                 // Set session jika login berhasil
                 Session::put('pegawai', [
                     'id' => $pegawai->id_pegawai,
                     'username' => $pegawai->username,
                     'nama' => $pegawai->nama_pegawai,
-                    'role' => $pegawai->role
+                    'role' => $pegawai->role,
                 ]);
 
                 return redirect()->route('dashboard')->with('success', 'Berhasil login!');
@@ -47,6 +48,6 @@ class AuthController extends Controller
     public function logout()
     {
         Session::forget('pegawai');
-        return redirect()->route('login')->with('success', 'Berhasil logout!');
+        return redirect()->route('login')->with('logout', 'Berhasil logout!');
     }
 }
