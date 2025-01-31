@@ -5,5 +5,3 @@
     <!-- Tulisan di kanan -->
     <span class="font-medium text-black">{{ session('pegawai')['nama'] ?? 'Guest' }}</span>
 </header>
-
-</header>
