@@ -38,7 +38,7 @@
 
     @endif
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"
         @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
         <div class="border-2 border-indigo-500 bg-white p-6 rounded-lg shadow flex items-center">
             <div class="mr-4 text-indigo-500">
@@ -90,8 +90,7 @@
                             <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Alamat
                             </th>
                             <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Stand
-                                Meter
-                            </th>
+                                Meter</th>
                             <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Tarif</th>
                             <th class="py-4 px-2 sm:px-4 text-center text-xs font-medium uppercase tracking-wide">Hasil
                                 Temuan</th>
