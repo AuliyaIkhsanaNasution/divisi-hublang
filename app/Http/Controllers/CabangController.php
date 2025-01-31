@@ -32,7 +32,7 @@ class CabangController extends Controller
         ]);
 
         // Redirect dengan pesan sukses
-        return redirect()->back()->with('success', 'Data cabang berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Data Cabang Berhasil Ditambahkan.');
     }
 
     public function destroy($id)
@@ -41,7 +41,7 @@ class CabangController extends Controller
         Cabang::destroyData($id);
 
         // Redirect back with a success message
-        return redirect()->route('cabang')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('cabang')->with('success', 'Data Cabang Berhasil Dihapus');
     }
 
     public function update(Request $request, $id)
@@ -56,7 +56,7 @@ class CabangController extends Controller
             'nama_cabang' => $validated['nama_cabang']
         ]);
 
-        return redirect()->route('cabang')->with('success', 'Cabang berhasil diperbarui.');
+        return redirect()->route('cabang')->with('success', ' Data Cabang Berhasil Diperbarui.');
     }
 
     public function edit($id)

@@ -39,7 +39,7 @@ class PegawaiController extends Controller
         Pegawai::destroyData($id);
 
         // Redirect back with a success message
-        return redirect()->route('pegawai')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('pegawai')->with('success', 'Data Pegawai Berhasil Dihapus');
     }
 
     public function update(Request $request, $id)
@@ -54,7 +54,7 @@ class PegawaiController extends Controller
             'nama_pegawai' => $validated['nama_pegawai']
         ]);
 
-        return redirect()->route('pegawai')->with('success', 'pegawai berhasil diperbarui.');
+        return redirect()->route('pegawai')->with('success', 'Data Pegawai Berhasil Diperbarui.');
     }
 
     public function edit($id)
