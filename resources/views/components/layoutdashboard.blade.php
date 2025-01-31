@@ -26,7 +26,7 @@
         {{-- Sidebar --}}
         @include('components.sidebar')
 
-        <div class="flex-1 flex flex-col">
+        <div class="flex flex-col flex-1 w-full">
             {{-- Header --}}
             @include('components.header')
 
@@ -36,7 +36,7 @@
             </main>
         </div>
     </div>
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('modal');
             const openModalButton = document.getElementById('openModalButton');
@@ -122,6 +122,43 @@
             filterForm.classList.toggle('hidden');
         });
     </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburgerButton = document.getElementById("hamburger-button");
+            const sidebar = document.getElementById("sidebar");
+            const closeButton = document.getElementById("close-button");
+
+            // Fungsi untuk membuka sidebar
+            function openSidebar() {
+                sidebar.classList.remove("-translate-x-full", "md:translate-x-0");
+            }
+
+            // Fungsi untuk menutup sidebar
+            function closeSidebar() {
+                sidebar.classList.add("-translate-x-full", "md:translate-x-0");
+            }
+
+            // Event listener untuk tombol hamburger
+            hamburgerButton.addEventListener("click", function() {
+                openSidebar();
+            });
+
+            // Event listener untuk tombol close
+            closeButton.addEventListener("click", function() {
+                closeSidebar();
+            });
+
+            // Event listener untuk klik di luar sidebar
+            document.addEventListener("click", function(event) {
+                if (!sidebar.contains(event.target) && !hamburgerButton.contains(event.target)) {
+                    closeSidebar();
+                }
+            });
+        }); 
+    </script> --}}
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>

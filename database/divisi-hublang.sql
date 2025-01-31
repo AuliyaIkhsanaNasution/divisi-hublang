@@ -16,7 +16,7 @@
 
 
 -- Dumping database structure for divisi-hublang
-CREATE DATABASE IF NOT EXISTS `divisi-hublang` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `divisi-hublang` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `divisi-hublang`;
 
 -- Dumping structure for table divisi-hublang.cabang
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `cabang` (
   `id_cabang` int NOT NULL AUTO_INCREMENT,
   `nama_cabang` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_cabang`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table divisi-hublang.cabang: ~21 rows (approximately)
 INSERT INTO `cabang` (`id_cabang`, `nama_cabang`) VALUES
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `form_inputan` (
   KEY `FK_cabang` (`cabang_id`),
   CONSTRAINT `FK_cabang` FOREIGN KEY (`cabang_id`) REFERENCES `cabang` (`id_cabang`),
   CONSTRAINT `FK_pegawai` FOREIGN KEY (`pegawai_id`) REFERENCES `pegawai` (`id_pegawai`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table divisi-hublang.form_inputan: ~2 rows (approximately)
 INSERT INTO `form_inputan` (`npa`, `pegawai_id`, `tanggal_input`, `nama_pelanggan`, `alamat`, `stand_meter`, `tarif`, `hasil_temuan`, `arahan_tindak_lanjut`, `cabang_id`, `tanggal_cek_ulang`) VALUES
@@ -173,10 +173,10 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `id_pegawai` int NOT NULL AUTO_INCREMENT,
   `nama_pegawai` varchar(50) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `role` enum('pegawai','admin') DEFAULT NULL,
   PRIMARY KEY (`id_pegawai`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table divisi-hublang.pegawai: ~14 rows (approximately)
 INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `role`) VALUES
