@@ -46,6 +46,16 @@
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700">
                 </div>
 
+                <!-- Tanggal Pengecekan Field -->
+                <div>
+                    <label for="tanggal_cek_ulang" class="block text-sm font-semibold text-gray-700">Tanggal Cek
+                        Ulang</label>
+                    <input type="date" id="tanggal_cek_ulang" name="tanggal_cek_ulang"
+                        value="{{ old('tanggal_cek_ulang', $data->tanggal_cek_ulang ?? '') }}"
+                        class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700"
+                        required>
+                </div>
+
                 <!-- Nama Pelanggan Field -->
                 <div>
                     <label for="nama_pelanggan" class="block text-sm font-semibold text-gray-700">Nama Pelanggan</label>
@@ -116,23 +126,13 @@
                 </div>
 
                 <!-- Tanggal Cetak Field -->
-                <div>
+                {{-- <div>
                     <label for="tanggal_cetak" class="block text-sm font-semibold text-gray-700">Tanggal Cetak</label>
                     <input type="date" id="tanggal_cetak" name="tanggal_cetak"
                         value="{{ old('tanggal_cetak', $data->tanggal_cetak ?? '') }}"
                         class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700"
                         required>
-                </div>
-
-                <!-- Tanggal Pengecekan Field -->
-                <div>
-                    <label for="tanggal_cek_ulang" class="block text-sm font-semibold text-gray-700">Tanggal Cek
-                        Ulang</label>
-                    <input type="date" id="tanggal_cek_ulang" name="tanggal_cek_ulang"
-                        value="{{ old('tanggal_cek_ulang', $data->tanggal_cek_ulang ?? '') }}"
-                        class="w-full mt-2 p-3 border border-blue-300 rounded-lg shadow-sm focus:ring-blue-700 focus:border-blue-700"
-                        required>
-                </div>
+                </div> --}}
 
                 <!-- Submit Button -->
                 <div>
