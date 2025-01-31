@@ -14,12 +14,17 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Dumping database structure for divisi-hublang
+CREATE DATABASE IF NOT EXISTS `divisi-hublang` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `divisi-hublang`;
+
 -- Dumping structure for table divisi-hublang.cabang
 CREATE TABLE IF NOT EXISTS `cabang` (
   `id_cabang` int NOT NULL AUTO_INCREMENT,
   `nama_cabang` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_cabang`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table divisi-hublang.cabang: ~21 rows (approximately)
 INSERT INTO `cabang` (`id_cabang`, `nama_cabang`) VALUES
@@ -42,7 +47,8 @@ INSERT INTO `cabang` (`id_cabang`, `nama_cabang`) VALUES
 	(17, 'Cabang Samosir'),
 	(18, 'Cabang Tapanuli Selatan'),
 	(19, 'Cabang Nias Selatan'),
-	(20, 'Unit Nias Utara');
+	(20, 'Unit Nias Utara'),
+	(34, 'Cabang Amplas');
 
 -- Dumping structure for table divisi-hublang.cache
 CREATE TABLE IF NOT EXISTS `cache` (
@@ -92,7 +98,6 @@ CREATE TABLE IF NOT EXISTS `form_inputan` (
   `arahan_tindak_lanjut` text NOT NULL,
   `cabang_id` int NOT NULL DEFAULT '0',
   `tanggal_cek_ulang` date NOT NULL,
-  `tanggal_cetak` date NOT NULL,
   PRIMARY KEY (`npa`),
   KEY `FK_pegawai` (`pegawai_id`),
   KEY `FK_cabang` (`cabang_id`),
@@ -100,11 +105,12 @@ CREATE TABLE IF NOT EXISTS `form_inputan` (
   CONSTRAINT `FK_pegawai` FOREIGN KEY (`pegawai_id`) REFERENCES `pegawai` (`id_pegawai`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table divisi-hublang.form_inputan: ~1 rows (approximately)
-INSERT INTO `form_inputan` (`npa`, `pegawai_id`, `tanggal_input`, `nama_pelanggan`, `alamat`, `stand_meter`, `tarif`, `hasil_temuan`, `arahan_tindak_lanjut`, `cabang_id`, `tanggal_cek_ulang`, `tanggal_cetak`) VALUES
-	('1109070028', 2, '2025-01-22', 'Esra Siagian', 'Jalan Rakyat 188/194', 8976, '89765', 'Meter Tertimbun', 'TLM', 9, '2025-01-15', '2025-01-07'),
-	('1122270002', 2, '2025-01-22', 'Sutami Karimunda', 'Kapt. M Jamil Lubis', 12, '122', 'Meter Mati, air dipakai pelanggan', 'Ganti Meter', 3, '2025-01-23', '2025-01-23'),
-	('1122270015', 1, '2025-01-22', 'Tiaminun Nasution', 'Kapt. M. Jamil Lubis Gg. Sukses 15', 222, '2222', 'Meter Mati, Air dipakai pelanggan', 'Ganti Meter', 2, '2025-01-21', '2025-01-23');
+-- Dumping data for table divisi-hublang.form_inputan: ~2 rows (approximately)
+INSERT INTO `form_inputan` (`npa`, `pegawai_id`, `tanggal_input`, `nama_pelanggan`, `alamat`, `stand_meter`, `tarif`, `hasil_temuan`, `arahan_tindak_lanjut`, `cabang_id`, `tanggal_cek_ulang`) VALUES
+	('100987675', 3, '2025-01-31', 'Mohidin Ahsan', 'Jl. Sm Raja Ujung', 23341, 'RT.3', 'Meter Bocor', 'Perbaiki Meter', 8, '2025-01-30'),
+	('1108564267', 15, '2025-01-31', 'Asyifa Aniyah', 'Jl. Pertahanan Dsn.V', 8767, 'RT.4', 'Tekor', 'Di cek kembali', 7, '2025-01-22'),
+	('1109540015', 15, '2025-01-24', 'Ang Kie', 'Letda Sujono 79', 3345, 'RT.3', 'Meter Timpa', 'Sudah Diberi tahu ke pelanggan untuk lapor stdd', 10, '2025-01-24'),
+	('1122270001', 15, '2025-01-23', 'Sutami Karimunda', 'jl.pertahanan', 8976, 'RT.4', 'Meter Tekor', 'Disesuaikan', 10, '2025-01-01');
 
 -- Dumping structure for table divisi-hublang.jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -167,26 +173,27 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `id_pegawai` int NOT NULL AUTO_INCREMENT,
   `nama_pegawai` varchar(50) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `role` enum('pegawai','admin') DEFAULT NULL,
   PRIMARY KEY (`id_pegawai`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table divisi-hublang.pegawai: ~15 rows (approximately)
-INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`) VALUES
-	(1, 'Ahmad Zuhdi Lubis', 'ahmad123', '12345'),
-	(2, 'Aulia Natalianz', 'aulia123', '12345'),
-	(3, 'Haslinda Nasution', 'haslinda123', '12345'),
-	(4, 'Hasoloan Sotarduga', 'hasoloan123', '12345'),
-	(5, 'Iskandar Zulkarnain Siregar', 'iskandar123', '12345'),
-	(6, 'Madina Sari Nasution', NULL, NULL),
-	(7, 'Muhammad Akhir Harahap', NULL, NULL),
-	(8, 'Muhammad Ridho', NULL, NULL),
-	(9, 'Ramadhan Harahap', NULL, NULL),
-	(10, 'Ramadoni', NULL, NULL),
-	(11, 'Rina Suryani', NULL, NULL),
-	(12, 'Romy Pranata', NULL, NULL),
-	(15, 'Lia Romaito Harahap', NULL, NULL),
-	(16, 'M. Yogi Firmansyah', NULL, NULL);
+-- Dumping data for table divisi-hublang.pegawai: ~14 rows (approximately)
+INSERT INTO `pegawai` (`id_pegawai`, `nama_pegawai`, `username`, `password`, `role`) VALUES
+	(1, 'Ahmad Zuhdi Lubis', 'ahmad123', '$2y$12$cw8EFpUG8wwnaxnfB46pkObiO2ne2Tn/cJRZa9AZugGqWyUDJ2cOu', 'pegawai'),
+	(2, 'Aulia Natalianz', 'aulia123', '$2y$12$5dWA2laZjoXzE2xsQG8.beddr7a3EXvEcXUNJVijFD4Kj2xvXyCj6', 'pegawai'),
+	(3, 'Haslinda Nasution', 'kadiv123', '$2y$12$oubQJbo6.BqlVzXsu6Qaiu..SMbO68DSoAt7jBOxyAHxPoa4ne90W', 'admin'),
+	(4, 'Hasoloan Sotarduga', 'hasoloan123', '$2y$12$emuncd/0seiovr8p1HsreOkzSIhNTMqk18N3HNjBXPY6tzZJ/mt/e', 'pegawai'),
+	(5, 'Iskandar Zulkarnain Siregar', 'iskandar123', '$2y$12$Icjo464T9IvJXOJ7so/eQOBsugscwwsMqY7yhXH2lrF8jmzED9gy.', 'pegawai'),
+	(6, 'Madina Sari Nasution', 'madina123', '$2y$12$j0x.3N3Htu8.im1UO.puUO0hiiKwWMfDKYfScJd.iYH9W60uYkGgG', 'pegawai'),
+	(7, 'Muhammad Akhir Harahap', 'akhir123', '$2y$12$ynV64naiT35hwAAGkiEMke96Y6OJEMPZBx7bw2LykZiJWj.mPWdVu', 'pegawai'),
+	(8, 'Muhammad Ridho', 'ridho123', '$2y$12$m0w.hazlA/B2zxU0C2/Tx.RCtUbA1YCYus71EWWHD57UkQG.xtOXC', 'pegawai'),
+	(9, 'Ramadhan Harahap', 'rama123', '$2y$12$Wzw7froQS4xzhMQzjfu42eDmrMZzuG3H796FwXmeBegN7XyxgeCdm', 'pegawai'),
+	(10, 'Ramadoni', 'doni123', '$2y$12$yLnDrIbmtlTYSEZKzW.nturJf7F4upLXLs5jKlye/7.2YD00EN3BO', 'pegawai'),
+	(11, 'Rina Suryani', 'rina123', '$2y$12$yQVF6hq1MlqSHTdDURRBtuR5J144HLe6s2btcqGEbixzqEq23uU4O', 'pegawai'),
+	(12, 'Romy Pranata', 'romy123', '$2y$12$U3LyrBP0QhhD1x6O6EOZpu2jJf8gXdbD.QJQSnJONSAPamifcyjta', 'pegawai'),
+	(15, 'Lia Romaito Harahap', 'lia123', '$2y$12$xzlF4cRfa60Lktl0Kw.VG.1yR7RN9zPKuwPp1AmVdNCgAPIMXj22W', 'pegawai'),
+	(16, 'M. Yogi Firmansyah', 'yogi123', '$2y$12$BGqYtcM2.LDjjb7ahw0Z/emXhsOE3hq8QC4xS5nFzOB1aEtnzBd1y', 'pegawai');
 
 -- Dumping structure for table divisi-hublang.sessions
 CREATE TABLE IF NOT EXISTS `sessions` (
@@ -201,9 +208,10 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table divisi-hublang.sessions: ~1 rows (approximately)
+-- Dumping data for table divisi-hublang.sessions: ~3 rows (approximately)
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('T0HTl4UyWGyx4xAgqgjRrHmqVNTo1HPJ4XqzeoZv', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTVZRTnNhbW11ZnJuaGJVTUl5MkZIR2dnMUxrbWFMaldxUEduWVRBOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9kaXZpc2ktaHVibGFuZy50ZXN0L3BkZiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NzoicGVnYXdhaSI7YTozOntzOjI6ImlkIjtpOjI7czo4OiJ1c2VybmFtZSI7czo4OiJhdWxpYTEyMyI7czo0OiJuYW1hIjtzOjE1OiJBdWxpYSBOYXRhbGlhbnoiO319', 1737535969);
+	('IVOAQU4vjVGUCREnQfi5xpd3oRaQk92ZGQ4lZkUp', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZE1XN3U2NGJTbndzV2pqbFZCS01yV0hGRWVNZE45dVo4enA4d1VaMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly9kaXZpc2ktaHVibGFuZy50ZXN0L2Zvcm0iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjc6InBlZ2F3YWkiO2E6NDp7czoyOiJpZCI7aToxNTtzOjg6InVzZXJuYW1lIjtzOjY6ImxpYTEyMyI7czo0OiJuYW1hIjtzOjE5OiJMaWEgUm9tYWl0byBIYXJhaGFwIjtzOjQ6InJvbGUiO3M6NzoicGVnYXdhaSI7fX0=', 1738296426),
+	('ZNxSZZYNyWBxPyjiuRHiK4T95pEDPxeqWjMsw7s0', NULL, '192.168.237.60', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWk51Q2k5TUMwZktpOU0yYjl6TGVxeEl2eFhiRU1ia1RLckwyYTRpdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjU6Imh0dHA6Ly8xOTIuMTY4LjIzNy4yOjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1738294810);
 
 -- Dumping structure for table divisi-hublang.users
 CREATE TABLE IF NOT EXISTS `users` (
