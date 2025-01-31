@@ -31,8 +31,6 @@ class DashboardController extends Controller
         ]);
     }
 
-
-
     public function destroy($npa)
     {
         // Call the delete method in the Dashboard model
