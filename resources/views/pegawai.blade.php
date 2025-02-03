@@ -39,7 +39,7 @@
     <div id="modalPegawai" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 justify-center items-center">
         <div class="bg-white rounded-lg shadow-lg w-96 p-6">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold">Tambah Data Pegawai</h2>
+                <h2 id="modalTitlePegawai" class="text-xl font-semibold">Tambah Data Pegawai</h2>
                 <button id="closeModalButtonPegawai" class="text-gray-500 hover:text-gray-700">&times;</button>
             </div>
             <form id="pegawaiForm" method="POST">

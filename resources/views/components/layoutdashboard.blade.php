@@ -42,12 +42,14 @@
             const openModalButton = document.getElementById('openModalButton');
             const editButtons = document.querySelectorAll('#openModalButtonEdit');
             const form = document.getElementById('cabangForm');
+            const modalTitle = document.getElementById('modalTitle'); // Ambil elemen judul modal
 
             // Fungsi untuk membuka modal tambah data
             openModalButton.addEventListener('click', () => {
                 document.getElementById('nama_cabang').value = '';
                 form.action = '{{ route('cabang.store') }}';
                 document.getElementById('method_field').value = 'POST';
+                modalTitle.textContent = 'Tambah Data Cabang'; // Ubah judul modal
                 modal.classList.remove('hidden')
                 modal.classList.add('flex');
             });
@@ -61,6 +63,7 @@
                     document.getElementById('nama_cabang').value = namaCabang;
                     form.action = `/cabang/${idCabang}`;
                     document.getElementById('method_field').value = 'PUT';
+                    modalTitle.textContent = 'Edit Data Cabang'; // Ubah judul modal
                     modal.classList.remove('hidden')
                     modal.classList.add('flex');
                 });
@@ -82,17 +85,20 @@
             const openModalButton = document.getElementById('openModalButtonPegawai');
             const editButtons = document.querySelectorAll('#openModalButtonEditPegawai');
             const form = document.getElementById('pegawaiForm');
+            const modalTitlePegawai = document.getElementById(
+                'modalTitlePegawai'); // Ambil elemen judul modal pegawai
 
-            // Fungsi untuk membuka modal tambah data
+            // Fungsi untuk membuka modal tambah data pegawai
             openModalButton.addEventListener('click', () => {
                 document.getElementById('nama_pegawai').value = '';
                 form.action = '{{ route('pegawai.store') }}';
                 document.getElementById('method_field').value = 'POST';
+                modalTitlePegawai.textContent = 'Tambah Data Pegawai'; // Ubah judul modal pegawai
                 modal.classList.remove('hidden')
                 modal.classList.add('flex');
             });
 
-            // Fungsi untuk membuka modal edit data
+            // Fungsi untuk membuka modal edit data pegawai
             editButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const namaPegawai = this.getAttribute('data-nama-pegawai');
@@ -101,6 +107,7 @@
                     document.getElementById('nama_pegawai').value = namaPegawai;
                     form.action = `/pegawai/${idPegawai}`;
                     document.getElementById('method_field').value = 'PUT';
+                    modalTitlePegawai.textContent = 'Edit Data Pegawai'; // Ubah judul modal pegawai
                     modal.classList.remove('hidden')
                     modal.classList.add('flex');
                 });
