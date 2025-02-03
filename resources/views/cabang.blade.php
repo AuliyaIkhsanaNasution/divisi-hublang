@@ -37,7 +37,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex justify-center items-center">
+    <div id="modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 justify-center items-center">
         <div class="bg-white rounded-lg shadow-lg w-96 p-6">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold">Tambah Data Cabang</h2>

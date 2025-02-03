@@ -36,7 +36,7 @@
             </main>
         </div>
     </div>
-    {{-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('modal');
             const openModalButton = document.getElementById('openModalButton');
@@ -48,7 +48,8 @@
                 document.getElementById('nama_cabang').value = '';
                 form.action = '{{ route('cabang.store') }}';
                 document.getElementById('method_field').value = 'POST';
-                modal.classList.remove('hidden');
+                modal.classList.remove('hidden')
+                modal.classList.add('flex');
             });
 
             // Fungsi untuk membuka modal edit data
@@ -60,7 +61,8 @@
                     document.getElementById('nama_cabang').value = namaCabang;
                     form.action = `/cabang/${idCabang}`;
                     document.getElementById('method_field').value = 'PUT';
-                    modal.classList.remove('hidden');
+                    modal.classList.remove('hidden')
+                    modal.classList.add('flex');
                 });
             });
 
@@ -86,7 +88,8 @@
                 document.getElementById('nama_pegawai').value = '';
                 form.action = '{{ route('pegawai.store') }}';
                 document.getElementById('method_field').value = 'POST';
-                modal.classList.remove('hidden');
+                modal.classList.remove('hidden')
+                modal.classList.add('flex');
             });
 
             // Fungsi untuk membuka modal edit data
@@ -98,7 +101,8 @@
                     document.getElementById('nama_pegawai').value = namaPegawai;
                     form.action = `/pegawai/${idPegawai}`;
                     document.getElementById('method_field').value = 'PUT';
-                    modal.classList.remove('hidden');
+                    modal.classList.remove('hidden')
+                    modal.classList.add('flex');
                 });
             });
 
@@ -156,8 +160,8 @@
                     closeSidebar();
                 }
             });
-        }); 
-    </script> --}}
+        });
+    </script>
     @vite(['resources/js/app.js'])
 </body>
 
