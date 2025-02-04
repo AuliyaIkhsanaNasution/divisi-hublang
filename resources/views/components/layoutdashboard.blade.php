@@ -125,15 +125,17 @@
     </script>
 
     <script>
-        // JavaScript untuk toggle form
-        const toggleFormButton = document.getElementById('toggleFormButton');
-        const filterForm = document.getElementById('filterForm');
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleFormButton = document.getElementById('toggleFormButton');
+            const filterForm = document.getElementById('filterForm');
 
-        toggleFormButton.addEventListener('click', () => {
-            filterForm.classList.toggle('hidden');
+            if (toggleFormButton && filterForm) { // Pastikan elemen ada
+                toggleFormButton.addEventListener('click', () => {
+                    filterForm.classList.toggle('hidden');
+                });
+            }
         });
     </script>
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
