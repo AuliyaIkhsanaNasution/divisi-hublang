@@ -9,7 +9,7 @@
     <!-- Navigation Section -->
     <nav class="flex-1 mt-2">
         <a href="/dashboard"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-lime-400 hover:text-white transition {{ request()->is('dashboard') ? 'bg-gradient-to-r from-blue-500 to-lime-400 text-white' : '' }}">
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-sky-700 hover:text-white transition {{ request()->is('dashboard') ? 'bg-gradient-to-r from-blue-500 to-sky-700 text-white' : '' }}">
             <span class="flex items-center">
                 <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
@@ -21,7 +21,7 @@
             </span>
         </a>
         <a href="/pegawai"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-lime-400 hover:text-white transition {{ request()->is('pegawai') ? 'bg-gradient-to-r from-blue-500 to-lime-400 text-white' : '' }}"
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-sky-700 hover:text-white transition {{ request()->is('pegawai') ? 'bg-gradient-to-r from-blue-500 to-sky-700 text-white' : '' }}"
             @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
             <span class="flex items-center">
                 <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -35,7 +35,7 @@
             </span>
         </a>
         <a href="/cabang"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-lime-400 hover:text-white transition {{ request()->is('cabang') ? 'bg-gradient-to-r from-blue-500 to-lime-400 text-white' : '' }}"
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-sky-700 hover:text-white transition {{ request()->is('cabang') ? 'bg-gradient-to-r from-blue-500 to-sky-700 text-white' : '' }}"
             @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
             <span class="flex items-center">
                 <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -47,7 +47,7 @@
             </span>
         </a>
         <a href="/form"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-lime-400 hover:text-white transition {{ request()->is('form') ? 'bg-gradient-to-r from-blue-500 to-lime-400 text-white' : '' }}">
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-sky-700 hover:text-white transition {{ request()->is('form') ? 'bg-gradient-to-r from-blue-500 to-sky-700 text-white' : '' }}">
             <span class="flex items-center">
                 <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@
             </span>
         </a>
         <a href="/laporan"
-            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-lime-400 hover:text-white transition {{ request()->is('laporan') ? 'bg-gradient-to-r from-blue-500 to-lime-400 text-white' : '' }}"
+            class="block py-3 px-6 rounded-lg mx-4 my-2 text-gray-700 hover:bg-gradient-to-r hover:from-blue-500 hover:to-sky-700 hover:text-white transition {{ request()->is('laporan') ? 'bg-gradient-to-r from-blue-500 to-sky-700 text-white' : '' }}"
             @if (Session::get('pegawai')['role'] !== 'admin') style="display: none;" @endif>
             <span class="flex items-center">
                 <svg class="w-5 h-5 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
